@@ -44,7 +44,26 @@ def checkout(request):
 
 
 def confimation(request):
+    user = request.user
     info = Cart.objects.all()[:1]
-    for item in info:
-        nom = item.nom
-    return render(request, 'shop/confirmation.html', {'nom': nom})
+
+    nom = user.nom
+    email = item.email
+    address = item.address
+    ville = item.ville
+    pays = item.pays
+    zipcode = item.zipcode
+    total = item.total
+    items = item.items
+
+    context = {
+        'nom': nom,
+        'email': email,
+        'address': address,
+        'ville': ville,
+        'pays': pays,
+        'zipcode': zipcode,
+        'total': total,
+        'items': items,
+    }
+    return render(request, 'shop/confirmation.html', context)

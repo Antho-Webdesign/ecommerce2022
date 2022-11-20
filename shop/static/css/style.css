@@ -18,3 +18,9 @@
 #navbarNavDropdown {
   color: #fff;
 }
+
+.card-body {
+  flex-direction: column;
+}
+
+

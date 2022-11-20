@@ -41,7 +41,10 @@
             <div class="card">
                 <img src="{{ product.image.url }}" alt="" class="card-ing-top">
                 <div class="card-body">
-                    <div id="aa{{ product.id }}" class="card-title">{{ product.title }}</div>
+                    <div id="aa{{ product.id }}" class="card-title">
+                        <h1>{{ product.title }}</h1>
+                    </div>
+
                     <div id="price{{ product.id }}" style="color:mediumvioletred; font-weight: bold;" class="card-text">Prix : {{ product.price }} €</div>
                     <a href="{{ product.id }}" class="btn btn-warning">Détails</a>
                     <button id="{{ product.id }}" class="btn ted btn-success" type="submit">Ajouter</button>

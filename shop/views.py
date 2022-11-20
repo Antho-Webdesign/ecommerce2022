@@ -37,9 +37,9 @@ def checkout(request):
         ville = request.POST.get('ville')
         pays = request.POST.get('pays')
         zipcode = request.POST.get('zipcode')
-    com = Cart(items=items, total=total, nom=nom, email=email, address=address, ville=ville, pays=pays,
-                   zipcode=zipcode)
-    com.save()
+        com = Cart(items=items, total=total, nom=nom, email=email, address=address, ville=ville, pays=pays,
+                       zipcode=zipcode)
+        com.save()
     return redirect('confirmation')
 
 

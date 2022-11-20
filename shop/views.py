@@ -22,6 +22,14 @@ def index(request):
     return render(request, 'shop/index.html', context)
 
 
+def itemss_cart_count(request):
+    if request.user.is_authenticated:
+        qs = Cart.objects.filter(user=request.user, ordered=False)
+        if qs.exists():
+            return qs[0].items.count()
+    return 0
+
+
 def detail(request, myid):
     product_object = Product.objects.get(id=myid)
     return render(request, 'shop/detail.html', {'product': product_object})
@@ -38,7 +46,7 @@ def checkout(request):
         pays = request.POST.get('pays')
         zipcode = request.POST.get('zipcode')
     com = Cart(items=items, total=total, nom=nom, email=email, address=address, ville=ville, pays=pays,
-                   zipcode=zipcode)
+               zipcode=zipcode)
     com.save()
     return redirect('confirmation')
 

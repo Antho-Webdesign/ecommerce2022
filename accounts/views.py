@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, logout, login, authenticate
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
@@ -18,10 +18,24 @@ def signup(request):  # sourcery skip: last-if-guard
                                         last_name=last_name)
         user.save()
         user.login(request, user)
-        return redirect('index')
+        return redirect('home')
 
     return render(request, 'accounts/signup.html')
 
 
 def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+        if user is None:
+            return redirect('login')
+        login(request, user)
+        return redirect('home')
     return render(request, 'accounts/login.html')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')

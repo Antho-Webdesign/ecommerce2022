@@ -65,10 +65,25 @@
                               sagittis lacus vel augue laoreet rutrum faucibus.">
                                 Panier({{ cart.count }})
                               </button>
-                            </li>
+                          </li>
 
-                        </li>
                       </ul>
+                    <nav class="navbar">
+                        <ul>
+                            {% if user.is_authenticated %}
+                            <li>
+                                <a href="{% url 'logout' %}">logout</a>
+                            </li>
+                            {% else %}
+                            <li>
+                                <a href="{% url 'login' %}">login</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'signup' %}">Register</a>
+                            </li>
+                        {% endif %}
+                        </ul>
+                    </nav>
                     </div>
                   </nav>
             </div>

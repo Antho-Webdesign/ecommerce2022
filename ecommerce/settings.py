@@ -1,5 +1,4 @@
 
-
 from pathlib import Path
 import os
 # import django_heroku
@@ -30,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
+    'accounts',
 
 
 ]
@@ -137,3 +137,4 @@ MEDIA_ROOT = 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # django_heroku.settings(locals())
+AUTH_USER_MODEL = 'accounts.Customer'

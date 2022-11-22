@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model, logout, login, authenticate
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
+from accounts.models import Profile
+
 user = get_user_model()
 
 
@@ -39,3 +41,11 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('home')
+
+
+def profile(request):
+    profiles = Profile.objects.get(user=request.user)
+    context = {
+        'profile': profiles,
+    }
+    return render(request, 'accounts/profile.html', context)

@@ -1,0 +1,44 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="title text-center mb-5">
+    <h1>Mes infos</h1>
+</div>
+    {% if user.is_authenticated %}
+    <div class="profile text-center">
+    <img src="{{ profile.image.url }}" alt="img" style="width: 25%; border-radius:100px;" class="mb-4 ">
+        <div class="mb-4">
+            <h2>Username: {{ user.username }}</h2>
+        </div>
+        <div class="mb-4">
+            <h2>Email: {{ user.email }}</h2>
+        </div>
+        <div class="mb-4">
+            <h2>First Name: {{ user.first_name }}</h2>
+        </div>
+        <div class="mb-4">
+            <h2>Last Name: {{ user.last_name }}</h2>
+        </div>
+        <div class="mb-2">
+            <h2>Address: {{ user.profile.address }}</h2>
+        </div>
+        <div class="mb-4">
+            <h2>Phone Number: {{ user.profile.phone_number }}</h2>
+        </div>
+        <div class="mb-4">
+            <h2>City: {{ user.profile.city }}</h2>
+        </div>
+        <div class="mb-4">
+            <h2>Zip Code: {{ user.profile.zip_code }}</h2>
+        </div>
+        <div class="mb-4">
+            <h2>Country: {{ user.profile.country }}</h2>
+        </div>
+        <div class="mb-4">
+            <h2 class="mb-2">State: {{ user.profile.state }}</h2>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

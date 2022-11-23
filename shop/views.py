@@ -1,5 +1,7 @@
-from django.shortcuts import redirect, render
-from .models import Product, Category, Cart
+from django.shortcuts import redirect, render, get_object_or_404
+from django.urls import reverse
+
+from .models import Product, Category, Cart, Order
 from django.core.paginator import Paginator
 
 
@@ -30,7 +32,27 @@ def itemss_cart_count(request):
     return 0
 
 
-def detail(request, myid):
-    product_object = Product.objects.get(id=myid)
-    return render(request, 'shop/detail.html', {'product': product_object})
+def detail(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+    return render(request, 'shop/detail.html', {'product': product})
 
+
+def cart(request):
+    cart = get_object_or_404(Cart, user=request.user)
+    return render(request, "shop/cart.html", context={"orders": cart.orders.all()})
+
+
+def add_to_cart(request, slug):
+    user = request.user
+    product = get_object_or_404(Product, slug=slug)
+    cart, _ = Cart.objects.get_or_create(user=user)
+    order, created = Order.objects.get_or_create(user=user, product=product)
+
+    if created:
+        cart.orders.add(order)
+        cart.save()
+    else:
+        order.quantity += 1
+        order.save()
+
+    return redirect(reverse("product", kwargs={"slug": slug}))

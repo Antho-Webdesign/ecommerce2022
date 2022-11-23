@@ -1,8 +1,9 @@
-from django.conf.global_settings import AUTH_USER_MODEL
+
 from django.db import models
 from django.urls import reverse
 
 from accounts.models import Customer
+from ecommerce.settings import AUTH_USER_MODEL
 
 
 # Create your models here.
@@ -58,15 +59,21 @@ class Product(models.Model):
 
 
 class Order(models.Model):
-    user = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     ordered = models.BooleanField(default=False)
-
     # ordered_date = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.quantity} of {self.product.name}"
+
+    def get_total_item_price(self):
+        return self.quantity * self.product.price
+
+    class Meta:
+        verbose_name_plural = 'Orders'
+        ordering = ('user',)
 
 
 # Panier(Cart)
@@ -79,18 +86,19 @@ class Order(models.Model):
 
 
 class Cart(models.Model):
-    user = models.OneToOneField(Customer, on_delete=models.CASCADE)
+    user = models.OneToOneField(AUTH_USER_MODEL, on_delete=models.CASCADE)
     orders = models.ManyToManyField(Order)
     ordered = models.BooleanField(default=False)
-    ordered_date = models.DateTimeField(blank=True, null=True)
 
     # ordered_date = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return self.user.username
+        return self.user.name
 
     class Meta:
-        ordering = ['-ordered_date']
+        ordering = ['user']
+        verbose_name = 'cart'
+        verbose_name_plural = 'carts'
 
     def delete_cart(self):
         self.orders.all().delete()

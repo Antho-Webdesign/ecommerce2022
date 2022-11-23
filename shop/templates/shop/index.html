@@ -57,8 +57,8 @@
                         <h1 class="text-dark">{{ product.name }}</h1>
                     </div>
 
-                    <a href="{{ product.id }}" class="btn btn-warning">Détails</a>
-                    <button id="{{ product.id }}" class="btn ted btn-success" type="submit">Ajouter</button>
+                    <a href="{% url 'detail' product.slug %}" class="btn btn-warning">Détails</a>
+                    <a href="{% url 'add_to_cart' product.slug %}"><button class="btn btn-success">Acheter</button></a>
                 </div>
 
             </div>

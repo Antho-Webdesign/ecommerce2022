@@ -6,12 +6,6 @@ from django.db import models
 class Customer(AbstractUser):
     pass
 
-    def __str__(self):
-        return self.username
-
-    class Meta:
-        verbose_name_plural = 'Customers'
-
 
 class Profile(models.Model):
     user = models.OneToOneField(Customer, on_delete=models.CASCADE)

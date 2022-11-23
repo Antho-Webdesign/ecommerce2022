@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.urls import reverse
 
@@ -49,6 +48,7 @@ class Product(models.Model):
         return reverse("product", kwargs={"slug": self.slug})
 
 
+
 # Article (Order)
 """
 - Utilisateur
@@ -93,16 +93,7 @@ class Cart(models.Model):
     # ordered_date = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return self.user.name
-
-    class Meta:
-        ordering = ['user']
-        verbose_name = 'cart'
-        verbose_name_plural = 'carts'
-
-    def delete_cart(self):
-        self.orders.all().delete()
-        self.delete()
+        return self.user.username
 
     '''
     def delete(self, *args, **kwargs):

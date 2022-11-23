@@ -1,10 +1,15 @@
 from django.urls import path
 
-from shop.views import index, detail, add_to_cart
+from accounts.views import profile, edit_profile
+from shop.views import index, add_to_cart, product_detail, cart, delete_cart
 
 urlpatterns = [
     path('', index, name='home'),
-    path('product/<str:slug>/', detail, name="detail"),
-    path('product/<str:slug>/add-to-cart/', add_to_cart, name="add_to_cart"),
+    path('product/<str:slug>/', product_detail, name="detail"),
+    path('cart/', cart, name='cart'),
+    path('product/add-to-cart/<str:slug>/', add_to_cart, name='add_to_cart'),
+    path('cart/delete/', delete_cart, name='delete-cart'),
+    path('profile', profile, name='profile'),
+    path('profile/edit', edit_profile, name='edit-profile'),
 ]
 

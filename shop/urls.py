@@ -1,7 +1,7 @@
 from django.urls import path
 
 from accounts.views import profile, edit_profile
-from shop.views import index, add_to_cart, product_detail, cart, delete_cart
+from shop.views import index, add_to_cart, product_detail, cart, delete_cart, delete_product_cart
 
 urlpatterns = [
     path('', index, name='home'),
@@ -9,6 +9,7 @@ urlpatterns = [
     path('cart/', cart, name='cart'),
     path('product/add-to-cart/<str:slug>/', add_to_cart, name='add_to_cart'),
     path('cart/delete/', delete_cart, name='delete-cart'),
+    path('cart/delete/product/<str:slug>/', delete_product_cart, name='delete-product-cart'),
     path('profile', profile, name='profile'),
     path('profile/edit', edit_profile, name='edit-profile'),
 ]

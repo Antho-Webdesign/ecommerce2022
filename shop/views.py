@@ -43,4 +43,14 @@ def delete_cart(request):
     if cart := request.user.cart:
         cart.orders.all().delete()
         cart.delete()
+
     return redirect("home")
+
+
+def delete_product_cart(request, slug):
+    # delete product by id
+    if product := get_object_or_404(Product, slug=slug):
+        if order := Order.objects.filter(product=product):
+            order.delete()
+
+    return redirect("cart")

@@ -1,14 +1,90 @@
 {% extends 'shop/base.html' %}
 
 {% block content %}
+<style>
+
+.box_panier {
+  display: flex;
+  flex-direction: column;
+}
+
+.product_detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 75px auto;
+}
+
+.product_detail > img:nth-child(2) {
+  /* width: 10%; */
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.entete_detail {
+  display: flex;
+  justify-content: center;
+}
+
+.product_detail > p:nth-child(3) {
+  text-align: center;
+}
+
+</style>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Panier</h1>
+
+            {% if user.cart %}
+                <table class="table table-striped text-light">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td class="text-light">{{ order.product.name }}</td>
+                                <td class="text-light">{{ order.quantity }}</td>
+                                <td class="text-light">{{ order.product.price }}</td>
+                                <td><a class="btn btn-danger" href="{% url 'delete-product-cart' order.product.slug %}">Supprimer</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            <!-- bouton supprimer panier -->
+
+                <p>
+                    <a class="btn btn-danger" href="{% url 'delete-cart' %}">Supprimer panier</a>
+                </p>
+            {% endif %}
+
+                <p>
+                    <a class="btn btn-success" href="#">Payer</a>
+                </p>
+
+        </div>
+    </div>
+</div>
+
 <div class="box_panier">
     {% for order in orders %}
-    <div class="product_detail" style=" display:flex; width: 90%; margin: auto; justify-content: space-between;">
+    <div class="product_detail">
         <div class="entete_detail">
             <h2>{{ order.product.name }}</h2>
         </div>
 
-        <img src="{{ order.product.image.url }}" alt="{{ order.product.name }}" style="width:10%">
+        <img src="{{ order.product.image.url }}" alt="{{ order.product.name }}">
+        <p style="color:mediumvioletred; font-weight: bold; font-size: 1.5em; text-align: center;">
+            Prix unitaire :{{ order.product.price }} €
+        </p>
         <p>Cette article apparait {{ order.quantity }} fois dans le panier</p>
     </div>
     <a class="btn btn-danger" href="{% url 'delete-cart' %}">Supprimer le panier</a>

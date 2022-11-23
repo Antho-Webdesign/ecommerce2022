@@ -81,16 +81,17 @@
                                 <li>
                                     <a href="{% url 'logout' %}">logout</a>
                                 </li>
-                                 {% if user.cart %}
+
+                                {% if user.cart %}
                                      <p>
                                          <a class="nav-link" href="{% url 'cart' %}">
-                                             {% load static %}
-                                             <i class="fa fa-cart-shopping"></i>
+                                             <i class="fa fa-cart-plus"></i>
                                              <!-- <img src="media/images/panier.png" alt="" style="width:25%"> -->
                                              ({{ user.cart.orders.count }})
                                          </a>
                                      </p>
-                    {% endif %}
+                                {% endif %}
+
                             {% else %}
                                 <li>
                                     <a href="{% url 'login' %}">login</a>

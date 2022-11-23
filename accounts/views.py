@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 
 from accounts.models import Profile
 
-user = get_user_model()
+User = get_user_model()
 
 
 # Create your views here.
@@ -12,14 +12,16 @@ def signup(request):  # sourcery skip: last-if-guard
     if request == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        password2 = request.POST.get('password2')
         email = request.POST.get('email')
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
 
-        user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name,
-                                        last_name=last_name)
+        user = User.objects.create_user(username=username, password=password, password2=password2,
+                                        email=email, first_name=first_name, last_name=last_name)
         user.save()
         user.login(request, user)
+
         return redirect('home')
 
     return render(request, 'accounts/signup.html')
@@ -49,3 +51,17 @@ def profile(request):
         'profile': profiles,
     }
     return render(request, 'accounts/profile.html', context)
+
+
+def edit_profile(request):
+    if request == 'POST':
+        user = request.user
+        user.username = request.POST.get('username')
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
+        user.email = request.POST.get('email')
+        # user.address = request.POST.get('address')
+
+        user.save()
+        return redirect('profile')
+    return render(request, 'accounts/profile_update.html')

@@ -1,20 +1,20 @@
 {% extends 'shop/base.html' %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row" style="align-items: center;">
+        <div class="col-md-6" style="display: flex; justify-content: center;">
             <div>
                 <img src="{{ product.image.url }}" width="500px" height="500px" alt="">
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="justify-content: center; display: flex; flex-direction: column">
             <div class="text-warning display-3">
                 {{ product.name }}
             </div>
             <div class="text-danger ">
                Prix:  $ {{ product.price }}
             </div>
-            <div>
+            <div style="width: 80% !important;">
                 {{ product.description }}
             </div>
             <a href="#"><button class="btn btn-success">Acheter</button></a>

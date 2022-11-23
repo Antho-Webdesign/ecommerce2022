@@ -22,6 +22,7 @@
     .card-body {
       flex-direction: column;
     }
+
 </style>
     <div class="row">
         <div class="col-md-12">
@@ -44,16 +45,22 @@
         {% for product in product_object %}
         <div class="col-md-3">
             <div class="card">
+
+                <div id="price price{{ product.id }}" style="color:mediumvioletred; font-weight: bold; font-size: 1.5em; text-align: center;" class="card-text">
+                    Prix : {{ product.price }} €
+                </div>
+
                 <img src="{{ product.image.url }}" alt="" class="card-ing-top">
+
                 <div class="card-body">
                     <div id="aa{{ product.id }}" class="card-title">
-                        <h1>{{ product.title }}</h1>
+                        <h1 class="text-dark">{{ product.name }}</h1>
                     </div>
 
-                    <div id="price{{ product.id }}" style="color:mediumvioletred; font-weight: bold;" class="card-text">Prix : {{ product.price }} €</div>
                     <a href="{{ product.id }}" class="btn btn-warning">Détails</a>
                     <button id="{{ product.id }}" class="btn ted btn-success" type="submit">Ajouter</button>
                 </div>
+
             </div>
         </div>
         {% endfor %}

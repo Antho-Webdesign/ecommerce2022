@@ -7,7 +7,7 @@
 </div>
     {% if user.is_authenticated %}
     <div class="profile text-center">
-    <img src="{{ profile.image.url }}" alt="img" style="width: 25%; border-radius:100px;" class="mb-4 ">
+        <img src="{{ profile.image.url }}" alt="img" style="width: 25%; border-radius:100px;" class="mb-4 ">
         <div class="mb-4">
             <h2>Username: {{ user.username }}</h2>
         </div>
@@ -40,5 +40,6 @@
         </div>
     </div>
     {% endif %}
+    <a href="{% url 'edit_profile' %}" class="btn btn-primary">Modifier mon profile</a>
 
 {% endblock %}

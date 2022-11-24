@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model, logout, login, authenticate
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from accounts.models import Profile
 
@@ -40,7 +40,8 @@ def logout_user(request):
 
 def profile(request):
     user = request.user
-    return render(request, 'accounts/profile.html', {'user': user})
+    profile = get_object_or_404(Profile, user=user)
+    return render(request, 'accounts/profile.html', {'profile': profile})
 
 
 def edit_profile(request):

@@ -87,7 +87,7 @@
                                          <a class="nav-link" href="{% url 'cart' %}">
                                              <i class="fa fa-cart-plus"></i>
                                              <!-- <img src="media/images/panier.png" alt="" style="width:25%"> -->
-                                             ({{ user.cart.orders.count }})
+                                             {{ user.cart.orders.count }}
                                          </a>
                                      </p>
                                 {% endif %}

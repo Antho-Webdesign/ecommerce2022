@@ -43,8 +43,8 @@
 
     <div class="row">
         {% for product in products %}
-        <div class="col-md-3">
-            <div class="card">
+        <div class="col-md-5 mb-5" style="display: flex; width: 33%; ">
+            <div class="card" style="width: 80%; display: flex; justify-content: center; margin: auto;">
 
                 <div id="price price{{ product.id }}" style="color:mediumvioletred; font-weight: bold; font-size: 1.5em; text-align: center;" class="card-text">
                     Prix : {{ product.price }} €

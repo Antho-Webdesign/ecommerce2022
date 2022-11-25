@@ -8,7 +8,8 @@ from .models import Product, Cart, Order, Category
 def index(request):
     products = Product.objects.all()
     categories = Category.objects.all()
-    return render(request, 'shop/index.html', {'products': products, 'categories': categories})
+    cart = request.user.cart
+    return render(request, 'shop/index.html', {'products': products, 'categories': categories, 'cart': cart})
 
 
 # product_detail
@@ -36,7 +37,6 @@ def add_to_cart(request, slug):
 
 def cart(request):
     cart = get_object_or_404(Cart, user=request.user)
-
     return render(request, "shop/cart.html", context={"orders": cart.orders.all()})
 
 

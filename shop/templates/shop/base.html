@@ -96,7 +96,7 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             {% for cat in categories %}
-                                <a class="dropdown-item text-dark text-dropdown" href="#">{{ cat.name }}</a>
+                                <a name="category" class="dropdown-item text-dark text-dropdown" href="{% url 'home' %}">{{ cat.name }}</a>
                             {% endfor %}
                         </div>
                     </li>
@@ -117,11 +117,16 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="{% url 'cart' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i style="margin-right:15px; " class="fa fa-cart-plus"></i>
-                                    {{ user.cart.orders.count }}
+                                    ({{ user.cart.orders.count }})
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     {% for order in user.cart.orders.all %}
-                                        <a class="dropdown-item text-dark text-dropdown" href="{% url 'detail' order.product.slug %}">{{ order.product.name }}</a>
+                                        <a class="dropdown-item text-dark text-dropdown" href="{% url 'detail' order.product.slug %}">
+                                            {{ order.product.name }}
+                                            <span class="btn btn-danger text-end m-auto" href="{% url 'delete-product-cart' order.product.slug %}">
+                                                X
+                                            </span>
+                                        </a>
                                     {% endfor %}
                                 </div>
                             </li>

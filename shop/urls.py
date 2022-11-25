@@ -12,5 +12,6 @@ urlpatterns = [
     path('cart/delete/product/<str:slug>/', delete_product_cart, name='delete-product-cart'),
     path('profile', profile, name='profile'),
     path('profile/edit', edit_profile, name='edit-profile'),
+    # path('<str:slug>/', product_filtered, name="products_filtered"),
 ]
 

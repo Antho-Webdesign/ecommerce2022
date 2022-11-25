@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
+from django.core.paginator import Paginator
 
 from .models import Product, Cart, Order, Category
 
@@ -9,15 +10,19 @@ def index(request):
     products = Product.objects.all()
     categories = Category.objects.all()
     cart = request.user.cart
+    products_page = Paginator(products, 4)
+    page_number = request.GET.get('page')
+    page_obj = products_page.get_page(page_number)
 
-    if request.method == 'GET':
-        if name := request.GET.get('search'):
+    if name := request.GET.get('search'):
+        if request.method == 'GET':
             products = products.filter(name__icontains=name)  # icontains: i=ignore majuscule/minuscule,
 
     context = {
         'products': products,
         'categories': categories,
         'cart': cart,
+        'page_obj': page_obj,
     }
 
     return render(request, 'shop/index.html', context)

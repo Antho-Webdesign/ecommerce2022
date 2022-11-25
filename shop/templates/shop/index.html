@@ -41,6 +41,7 @@ form.card {
     width: 25%;
 }
 
+
 @media screen and (max-width: 950px) {
     .box-product {
         flex-wrap: wrap;
@@ -56,6 +57,7 @@ form.card {
     }
 
     .content-box-product {
+        margin: auto 30px;
         padding: 0;
     }
 
@@ -97,7 +99,7 @@ form.card {
                 <img src="{{ product.image.url }}" alt="" class="card-ing-top">
 
                 <div class="card-body">
-                    <div id="price price{{ product.id }}" style="color:mediumvioletred; font-weight: bold; font-size: 1.5em; text-align: center;" class="card-text mb-5">
+                    <div id="price price{{ product.id }}" style="color: mediumvioletred; font-weight: bold; font-size: 1.5em; text-align: center;" class="card-text mb-5">
                         Prix : {{ product.price }} €
                     </div>
                     <div class="box-btn">

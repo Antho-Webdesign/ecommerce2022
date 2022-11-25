@@ -2,37 +2,75 @@
 
 {% block content %}
 <style>
-   .card-body {
-      width: 50%;
-      display: flex;
-      margin: auto;
+.card-body {
+    width: 50%;
+    display: flex;
+    margin: auto;
+}
+
+form.card {
+    background: border-box;
+    padding: 30px;
+    margin: 50px auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-body {
+    flex-direction: column;
+}
+
+.no-gutters {
+  justify-content: center;
+  width: 40%;
+  margin: auto;
+}
+
+.box-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 950px) {
+    .box-product {
+        flex-wrap: wrap;
+        align-items: center;
     }
 
-    form.card {
-      background: border-box;
-      padding: 30px;
-      margin: 50px auto;
-    }
-
-   .row {
-      display: flex;
-      justify-content: space-around;
+    .product-title {
+        font-size: 1.7em;
     }
 
     .card-body {
-      flex-direction: column;
+        width: 100%;
     }
 
+    .content-box-product {
+        padding: 0;
+    }
+
+    .box-btn {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+}
 </style>
+    <!-- Search Bar -->
     <div class="row">
         <div class="col-md-12">
-            <form class="card card-sm">
-                <div class="card-body row no-gutters align-items-center">
+            <form class="card card-sm" style="border: none; display: flex; justify-content: center">
+                <div class="row no-gutters align-items-center">
+
                     <div class="col">
-                        <label>
+                        <label style="width: 100%;">
                             <input type="search" placeholder="Entrez le nom du produit que vous cherchez" name="item-name" class="form-control form-control-borderless">
                         </label>
                     </div>
+
                     <div class="col-auto">
                         <button type="submit" class="btn btn-success">Recherche</button>
                     </div>
@@ -41,10 +79,10 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row box-product">
         {% for product in products %}
-        <div class="col-md-5 mb-5" style="display: flex; width: 33%; ">
-            <div class="card" style="width: 80%; display: flex; justify-content: center; margin: auto;">
+        <div class="col-md-5 mb-5 content-box-product" style="display: flex; width: 33%; ">
+            <div class="card" style="width: 80%; display: flex; justify-content: center; margin: auto; background: transparent; border: none">
 
                 <div id="price price{{ product.id }}" style="color:mediumvioletred; font-weight: bold; font-size: 1.5em; text-align: center;" class="card-text">
                     Prix : {{ product.price }} €
@@ -54,11 +92,19 @@
 
                 <div class="card-body">
                     <div id="aa{{ product.id }}" class="card-title">
-                        <h1 class="text-dark">{{ product.name }}</h1>
+                        <h1 class="text-center product-title">{{ product.name }}</h1>
                     </div>
+                    <div class="box-btn">
 
-                    <a href="{% url 'detail' product.slug %}" class="btn btn-warning">Détails</a>
-                    <a href="{% url 'add_to_cart' product.slug %}"><button class="btn btn-success">Acheter</button></a>
+                        <div class="btn-left">
+                            <a href="{% url 'detail' product.slug %}" class="btn btn-warning">Détails</a>
+                        </div>
+
+                        <div class="btn-right">
+                            <a href="{% url 'add_to_cart' product.slug %}" class="btn btn-success">Acheter</a>
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
@@ -88,52 +134,5 @@
             </ul>
         </div>
     </div>
-
-{% endblock %}
-
-{% block js %}
-    <script type="text/javascript">
-        console.log('Juste pour tester ');
-        if(localStorage.getItem('panier') == null){
-            var panier = {};
-        }else{
-            panier = JSON.parse(localStorage.getItem('panier'));
-        }
-        $(document).on('click', '.ted', function(){
-            console.log('ajouter');
-            var item_id = this.id.toString();
-            console.log(item_id);
-            if(panier[item_id] != undefined){
-                quantite = panier[item_id][0] +1 ;
-                panier[item_id][0] = quantite;
-                panier[item_id][2] += parseFloat(document.getElementById("price"+item_id).innerHTML);
-            }else{
-                quantite = 1;
-                prix = parseFloat(document.getElementById("price"+item_id).innerHTML);
-                nom =  document.getElementById("aa"+item_id).innerHTML;
-                panier[item_id] = [quantite, nom, prix ];
-                
-            }
-            console.log(panier);
-            localStorage.setItem('panier', JSON.stringify(panier));
-            document.getElementById("panier").innerHTML ="Panier("+ Object.keys(panier).length+")";
-            
-        });
-        AfficherList(panier);
-        function AfficherList(panier){
-            var panierString = " ";
-            panierString += "<h5>Voici votre liste</h5>";
-            var index = 1;
-            for(var x in panier){
-                panierString += index;
-                panierString += document.getElementById("aa"+x).innerHTML + " Qte: "+ panier[x][0] + "</br>";
-                index +=1;
-            }
-            panierString += "<a href='/checkout' class='btn btn-primary'>Checkout</a>";
-            $('[data-toggle="popover"]').popover();
-            document.getElementById('panier').setAttribute('data-content', panierString);
-        }
-
-    </script>
 
 {% endblock %}

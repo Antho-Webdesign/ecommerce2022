@@ -54,7 +54,9 @@
                                 <td class="text-light">{{ order.product.name }}</td>
                                 <td class="text-light">{{ order.quantity }}</td>
                                 <td class="text-light">{{ order.product.price }}</td>
-                                <td><a class="btn btn-danger" href="{% url 'delete-product-cart' order.product.slug %}">Supprimer</a></td>
+                                <td>
+                                    <a class="btn btn-danger" href="{% url 'delete-product-cart' order.product.slug %}">Supprimer</a>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>

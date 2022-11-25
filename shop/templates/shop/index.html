@@ -17,6 +17,8 @@ form.card {
 .row {
     display: flex;
     justify-content: space-around;
+    width: 100%;
+    margin: 0;
 }
 
 .card-body {
@@ -24,14 +26,19 @@ form.card {
 }
 
 .no-gutters {
-  justify-content: center;
-  width: 40%;
-  margin: auto;
+    justify-content: center;
+    width: 40%;
+    margin: auto;
 }
 
 .box-btn {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-box-product {
+    display: flex;
+    width: 25%;
 }
 
 @media screen and (max-width: 950px) {
@@ -81,18 +88,17 @@ form.card {
 
     <div class="row box-product">
         {% for product in products %}
-        <div class="col-md-5 mb-5 content-box-product" style="display: flex; width: 33%; ">
+        <div class="col-md-5 mb-5 content-box-product">
             <div class="card" style="width: 80%; display: flex; justify-content: center; margin: auto; background: transparent; border: none">
-
-                <div id="price price{{ product.id }}" style="color:mediumvioletred; font-weight: bold; font-size: 1.5em; text-align: center;" class="card-text">
-                    Prix : {{ product.price }} €
+                <div id="aa{{ product.id }}" class="card-title">
+                    <h1 class="text-center product-title">{{ product.name }}</h1>
                 </div>
 
                 <img src="{{ product.image.url }}" alt="" class="card-ing-top">
 
                 <div class="card-body">
-                    <div id="aa{{ product.id }}" class="card-title">
-                        <h1 class="text-center product-title">{{ product.name }}</h1>
+                    <div id="price price{{ product.id }}" style="color:mediumvioletred; font-weight: bold; font-size: 1.5em; text-align: center;" class="card-text">
+                        Prix : {{ product.price }} €
                     </div>
                     <div class="box-btn">
 

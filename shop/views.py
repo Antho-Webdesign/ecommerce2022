@@ -1,13 +1,14 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 
-from .models import Product, Cart, Order
+from .models import Product, Cart, Order, Category
 
 
 # index
 def index(request):
     products = Product.objects.all()
-    return render(request, 'shop/index.html', {'products': products})
+    categories = Category.objects.all()
+    return render(request, 'shop/index.html', {'products': products, 'categories': categories})
 
 
 # product_detail

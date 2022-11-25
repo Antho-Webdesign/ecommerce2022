@@ -3,32 +3,49 @@
 {% block content %}
 <style>
 
-.box_panier {
-  display: flex;
-  flex-direction: column;
-}
-
-.product_detail {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 75px auto;
-}
-
 .product_detail > img:nth-child(2) {
-  /* width: 10%; */
   width: 50%;
   display: flex;
   justify-content: center;
   margin: auto;
 }
 
-.entete_detail {
-  display: flex;
-  justify-content: center;
+.product_detail > p:nth-child(3) {
+  text-align: center;
 }
 
-.product_detail > p:nth-child(3) {
+.box-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-left {
+  display: flex;
+  width: 100%;
+}
+
+.btn-right {
+  display: flex;
+  width: 50%;
+}
+
+.box-btn {
+  justify-content: space-around;
+  margin: 75px auto;
+  flex-direction: row;
+}
+
+.btn-success {
+  width: 50%;
+}
+
+.btn-del-all {
+  width: 100%;
+}
+
+.table {
+    font-size: 1.5em;
   text-align: center;
 }
 
@@ -36,7 +53,7 @@
     <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Panier</h1>
+            <h1 class="text-center mt-5 mb-5">Panier</h1>
 
             {% if user.cart %}
                 <table class="table table-striped text-light">
@@ -62,34 +79,24 @@
                     </tbody>
                 </table>
             <!-- bouton supprimer panier -->
+                <div class="box-btn">
 
-                <p>
-                    <a class="btn btn-danger" href="{% url 'delete-cart' %}">Supprimer panier</a>
-                </p>
+                        <div class="btn-left">
+                            <a href="#" class="btn btn-success">Pyer</a>
+                        </div>
+
+                        <div class="btn-right">
+                            <a class="btn btn-danger btn-del-all" href="{% url 'delete-cart' %}">Supprimer tout le panier</a>
+                        </div>
+
+                    </div>
+            {% else %}
+                <p class="text-light">Votre panier est vide</p>
+
             {% endif %}
 
-                <p>
-                    <a class="btn btn-success" href="#">Payer</a>
-                </p>
-
         </div>
     </div>
 </div>
 
-<div class="box_panier">
-    {% for order in orders %}
-    <div class="product_detail">
-        <div class="entete_detail">
-            <h2>{{ order.product.name }}</h2>
-        </div>
-
-        <img src="{{ order.product.image.url }}" alt="{{ order.product.name }}">
-        <p style="color:mediumvioletred; font-weight: bold; font-size: 1.5em; text-align: center;">
-            Prix unitaire :{{ order.product.price }} €
-        </p>
-        <p>Cette article apparait {{ order.quantity }} fois dans le panier</p>
-    </div>
-    <a class="btn btn-danger" href="{% url 'delete-cart' %}">Supprimer le panier</a>
-    {% endfor %}
-</div>
 {% endblock %}

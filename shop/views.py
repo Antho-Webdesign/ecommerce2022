@@ -12,8 +12,15 @@ def index(request):
 
     if request.method == 'GET':
         if name := request.GET.get('search'):
-            products = products.filter(name__icontains=name)
-    return render(request, 'shop/index.html', {'products': products, 'categories': categories, 'cart': cart})
+            products = products.filter(name__icontains=name)  # icontains: i=ignore majuscule/minuscule,
+
+    context = {
+        'products': products,
+        'categories': categories,
+        'cart': cart,
+    }
+
+    return render(request, 'shop/index.html', context)
 
 
 # product_detail

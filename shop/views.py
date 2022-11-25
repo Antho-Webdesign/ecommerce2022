@@ -9,6 +9,10 @@ def index(request):
     products = Product.objects.all()
     categories = Category.objects.all()
     cart = request.user.cart
+
+    if request.method == 'GET':
+        if name := request.GET.get('search'):
+            products = products.filter(name__icontains=name)
     return render(request, 'shop/index.html', {'products': products, 'categories': categories, 'cart': cart})
 
 

@@ -116,7 +116,7 @@
 
                         {% if user.cart %}
                             <li class="nav-item dropdown">
-                                <a style="color: #006b1b" class="nav-link dropdown-toggle" href="{% url 'cart' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="{% url 'cart' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-cart-plus"></i>
                                     ({{ user.cart.orders.count }})
                                 </a>

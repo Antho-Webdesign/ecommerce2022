@@ -9,7 +9,7 @@ from .models import Product, Cart, Order, Category
 def index(request):
     products = Product.objects.all()
     categories = Category.objects.all()
-    cart = request.user.cart
+
     products_page = Paginator(products, 3)
     page_number = request.GET.get('page')
     page_obj = products_page.get_page(page_number)
@@ -19,17 +19,14 @@ def index(request):
         if request.method == 'GET':
             products = products.filter(name__icontains=name)  # icontains: i=ignore majuscule/minuscule,
 
-    '''
     context = {
         'products': products,
         'categories': categories,
         'cart': cart,
         'page_obj': page_obj,
-        'products_filtered': products_filtered,
 
     }
-    '''
-    return render(request, 'shop/index.html', locals())
+    return render(request, 'shop/index.html', context)
 
 
 def filter_by_category(request, slug):

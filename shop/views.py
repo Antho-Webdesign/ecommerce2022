@@ -19,17 +19,14 @@ def index(request):
         if request.method == 'GET':
             products = products.filter(name__icontains=name)  # icontains: i=ignore majuscule/minuscule,
 
-    '''
     context = {
         'products': products,
         'categories': categories,
         'cart': cart,
         'page_obj': page_obj,
-        'products_filtered': products_filtered,
-
     }
-    '''
-    return render(request, 'shop/index.html', locals())
+
+    return render(request, 'shop/index.html', context)
 
 
 def filter_by_category(request, slug):

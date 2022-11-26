@@ -1,7 +1,7 @@
 from django.urls import path
 
 from accounts.views import profile, edit_profile
-from shop.views import index, add_to_cart, product_detail, cart, delete_cart, delete_product_cart
+from shop.views import index, add_to_cart, product_detail, cart, delete_cart, delete_product_cart, filter_by_category
 
 urlpatterns = [
     path('', index, name='home'),
@@ -12,6 +12,6 @@ urlpatterns = [
     path('cart/delete/product/<str:slug>/', delete_product_cart, name='delete-product-cart'),
     path('profile', profile, name='profile'),
     path('profile/edit', edit_profile, name='edit-profile'),
-    # path('<str:slug>/', product_filtered, name="products_filtered"),
+    path('category/<str:slug>/', filter_by_category, name='products_filtered'),
 ]
 

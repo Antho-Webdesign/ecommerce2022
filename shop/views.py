@@ -9,7 +9,6 @@ from .models import Product, Cart, Order, Category
 def index(request):
     products = Product.objects.all()
     categories = Category.objects.all()
-    cart = request.user.cart
     products_page = Paginator(products, 3)
     page_number = request.GET.get('page')
     page_obj = products_page.get_page(page_number)
@@ -22,7 +21,7 @@ def index(request):
     context = {
         'products': products,
         'categories': categories,
-        'cart': cart,
+        # 'cart': cart,
         'page_obj': page_obj,
     }
 
@@ -62,7 +61,7 @@ def add_to_cart(request, slug):
 
 
 def cart(request):
-    cart = get_object_or_404(Cart, user=request.user)
+    cart = request.user.cart
     return render(request, "shop/cart.html", context={"orders": cart.orders.all()})
 
 

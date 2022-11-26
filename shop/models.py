@@ -1,8 +1,12 @@
+from django.contrib.auth import get_user_model, login
+from django.contrib.auth.decorators import login_required
 from django.db import models
 from django.urls import reverse
 
 from accounts.models import Customer
 from ecommerce.settings import AUTH_USER_MODEL
+
+user = get_user_model()
 
 
 # Create your models here.
@@ -48,7 +52,6 @@ class Product(models.Model):
         return reverse("product", kwargs={"slug": self.slug})
 
 
-
 # Article (Order)
 """
 - Utilisateur
@@ -63,6 +66,7 @@ class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     ordered = models.BooleanField(default=False)
+
     # ordered_date = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
@@ -85,8 +89,9 @@ class Order(models.Model):
 """
 
 
+
 class Cart(models.Model):
-    user = models.OneToOneField(AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     orders = models.ManyToManyField(Order)
     ordered = models.BooleanField(default=False)
 

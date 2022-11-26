@@ -96,7 +96,7 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             {% for cat in categories %}
-                                <a name="category" class="dropdown-item text-dark text-dropdown" href="{% url 'home' %}">{{ cat.name }}</a>
+                                <a name="category" class="dropdown-item text-dark text-dropdown" href="{% url 'category' cat.slug %}">{{ cat.name }}</a>
                             {% endfor %}
                         </div>
                     </li>
@@ -109,6 +109,7 @@
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="nav-link text-dark text-center text-dropdown" href="{% url 'profile' %}">profile</a>
+                                <a class="nav-link text-dark text-center text-dropdown" href="{% url 'cart' %}">Cart</a>
                                 <a class="nav-link text-dark text-center text-dropdown" href="{% url 'logout' %}">Logout</a>
                             </div>
                         </li>
@@ -122,12 +123,13 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     {% for order in user.cart.orders.all %}
-                                        <a class="dropdown-item text-dark text-dropdown" href="{% url 'detail' order.product.slug %}">
-                                            {{ order.product.name }}
-                                            <span class="btn btn-danger text-end m-auto" href="{% url 'delete-product-cart' order.product.slug %}">
+                                        <div class="cart-box">
+                                            <a class="dropdown-item text-dark text-dropdown" href="{% url 'detail' order.product.slug %}">
+                                                {{ order.product.name }}</a>
+                                            <a class="btn btn-danger text-end m-auto" href="{% url 'delete-product-cart' order.product.slug %}">
                                                 X
-                                            </span>
-                                        </a>
+                                            </a>
+                                        </div>
                                     {% endfor %}
                                 </div>
                             </li>

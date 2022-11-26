@@ -9,10 +9,10 @@ from .models import Product, Cart, Order, Category
 def index(request):
     products = Product.objects.all()
     categories = Category.objects.all()
-
     products_page = Paginator(products, 3)
     page_number = request.GET.get('page')
     page_obj = products_page.get_page(page_number)
+    cart = Cart.objects.filter(user=request.user).first()
     # products_filtered = request.GET.get('category')
 
     if name := request.GET.get('search'):
@@ -24,14 +24,15 @@ def index(request):
         'categories': categories,
         'cart': cart,
         'page_obj': page_obj,
-
     }
     return render(request, 'shop/index.html', context)
 
 
 def filter_by_category(request, slug):
-    category = get_object_or_404(Category, slug=slug)
+    category = Category.objects.get(slug=slug)
     products = Product.objects.filter(category=category)
+    # categories = Category.objects.all()
+
     context = {
         'products': products,
         'category': category

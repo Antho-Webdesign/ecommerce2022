@@ -10,9 +10,10 @@ def index(request):
     products = Product.objects.all()
     categories = Category.objects.all()
     cart = request.user.cart
-    products_page = Paginator(products, 4)
+    products_page = Paginator(products, 3)
     page_number = request.GET.get('page')
     page_obj = products_page.get_page(page_number)
+    # products_filtered = request.GET.get('category')
 
     if name := request.GET.get('search'):
         if request.method == 'GET':
@@ -25,6 +26,16 @@ def index(request):
         'page_obj': page_obj,
     }
 
+    return render(request, 'shop/index.html', context)
+
+
+def filter_by_category(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    products = Product.objects.filter(category=category)
+    context = {
+        'products': products,
+        'category': category
+    }
     return render(request, 'shop/index.html', context)
 
 

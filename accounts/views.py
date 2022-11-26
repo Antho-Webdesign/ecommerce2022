@@ -30,6 +30,7 @@ def login_user(request):
 
         if user := authenticate(request, username=username, password=password):
             login(request, user)
+            return redirect('home')
     return render(request, 'accounts/login.html')
 
 

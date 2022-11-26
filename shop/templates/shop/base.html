@@ -113,11 +113,11 @@
                             </div>
                         </li>
 
-                        {% comment %}
+
                         {% if user.cart %}
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="{% url 'cart' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i style="margin-right:15px; " class="fa fa-cart-plus"></i>
+                                <a style="color: #006b1b" class="nav-link dropdown-toggle" href="{% url 'cart' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-cart-plus"></i>
                                     ({{ user.cart.orders.count }})
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -132,7 +132,7 @@
                                 </div>
                             </li>
                         {% endif %}
-                        {% endcomment %}
+
                     {% else %}
                         <li class="nav-item">
                             <a href="{% url 'login' %}">login</a>

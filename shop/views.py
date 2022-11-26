@@ -12,7 +12,7 @@ def index(request):
     products_page = Paginator(products, 3)
     page_number = request.GET.get('page')
     page_obj = products_page.get_page(page_number)
-    cart = Cart.objects.filter(user=request.user).first()
+    # cart = Cart.objects.filter(user=request.user).first()
     # products_filtered = request.GET.get('category')
 
     if name := request.GET.get('search'):

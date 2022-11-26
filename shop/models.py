@@ -13,14 +13,11 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['-date_added']
-        verbose_name = 'categorie'
+        verbose_name = 'category'
         verbose_name_plural = 'categories'
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return reverse('products_filtered', args=[self.slug])
 
 
 """

@@ -2,5 +2,55 @@
 {% load static %}
 
 {% block content %}
+    <!-- edit profile -->
+    <div class="update-profile">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="update-profile__title">
+                        <h2>Update Profile</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="update-profile__form">
+                        <form action="{% url 'update_profile' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}">
+
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+
+                                <label for="first_name">First Name</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}">
+
+                                <label for="last_name">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}">
+
+                                <label for="phone">Phone</label>
+                                <input type="text" class="form-control" id="phone" name="phone" value="{{ user.phone }}">
+
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" name="address" value="{{ user.address }}">
+
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" id="city" name="city" value="{{ user.city }}">
+
+                                <label for="country">Country</label>
+                                <input type="text" class="form-control" id="country" name="country" value="{{ user.country }}">
+
+
+                                <button type="submit" class="btn btn-primary">Update</button>
+
+                            </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

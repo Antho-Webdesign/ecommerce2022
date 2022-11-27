@@ -49,6 +49,12 @@
   text-align: center;
 }
 
+.total-price {
+  font-size: 1em;
+  text-align: end;
+  font-style: italic;
+}
+
 </style>
     <div class="container">
     <div class="row">
@@ -78,6 +84,11 @@
                         {% endfor %}
                     </tbody>
                 </table>
+                <!-- calcule prix total -->
+                <p class="text-light total-price">Total du panier(TTC) :
+                    <strong>{{ total }} €</strong>
+                </p>
+
             <!-- bouton supprimer panier -->
                 <div class="box-btn">
 

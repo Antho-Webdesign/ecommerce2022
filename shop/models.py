@@ -17,7 +17,7 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['-date_added']
-        verbose_name = 'category'
+        verbose_name = 'categorie'
         verbose_name_plural = 'categories'
 
     def __str__(self):
@@ -50,6 +50,11 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse("product", kwargs={"slug": self.slug})
+
+    # TVA 20%
+    def tva(self):
+        return self.price * 0.2
+
 
 
 # Article (Order)

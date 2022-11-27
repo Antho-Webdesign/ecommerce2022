@@ -5,6 +5,18 @@ from django.core.paginator import Paginator
 from .models import Product, Cart, Order, Category
 
 
+# calcule de la tva 20%
+def tva(request):
+    ttc = sum(order.product.price * order.quantity for order in request.user.cart.orders.all())
+    return ttc * 0.2
+# calcule le total du panier
+def total_cart(request):
+    cart = get_object_or_404(Cart, user=request.user)
+    total = sum(order.product.price * order.quantity for order in cart.orders.all())
+
+    return render(request, "shop/cart.html", context={"total": total})
+
+
 # index
 def index(request):
     products = Product.objects.all()
@@ -12,6 +24,7 @@ def index(request):
     products_page = Paginator(products, 3)
     page_number = request.GET.get('page')
     page_obj = products_page.get_page(page_number)
+
     # cart = Cart.objects.filter(user=request.user).first()
     # products_filtered = request.GET.get('category')
 
@@ -43,6 +56,7 @@ def filter_by_category(request, slug):
 # product_detail
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
+
     return render(request, 'shop/detail.html', {'product': product})
 
 
@@ -63,8 +77,10 @@ def add_to_cart(request, slug):
 
 
 def cart(request):
+    total = sum(order.product.price * order.quantity for order in request.user.cart.orders.all())
     cart = get_object_or_404(Cart, user=request.user)
-    return render(request, "shop/cart.html", context={"orders": cart.orders.all()})
+    return render(request, 'shop/cart.html', {"orders": cart.orders.all(), 'total': total})
+    # return render(request, "shop/cart.html", context={"orders": cart.orders.all()})
 
 
 def delete_cart(request):

@@ -4,8 +4,8 @@ cart==1.2.1
 certifi==2022.9.24
 cffi==1.15.1
 charset-normalizer==2.0.8
-click==8.1.3
-click-config-file==0.6.0
+click
+click-config-file
 configobj==5.0.6
 cryptography==38.0.3
 decorator==5.1.1

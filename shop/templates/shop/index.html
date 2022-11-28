@@ -87,6 +87,38 @@ form.card {
         {% endblock %}
 
     <div class="row box-product">
+    <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand">Categories:</span>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+              {% for category in categories %}
+
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url 'category' category.slug %}">{{ category.name}}</a>
+                      </li>
+
+
+              {% endfor %}
+          </ul>
+          <!-- Links -->
+        </div>
+        <!-- Collapsible content -->
+
+      </nav>
+      <!--/.Navbar-->
         {% for product in products %}
         <div class="col-md-5 mb-5 content-box-product">
             <div class="card" style="width: 80%; display: flex; justify-content: center; margin: auto; background: transparent; border: none">
@@ -98,7 +130,7 @@ form.card {
 
                 <div class="card-body">
                     <div id="price price{{ product.id }}" style="color: mediumvioletred; font-weight: bold; font-size: 1.5em; text-align: center;" class="card-text mb-5">
-                        Prix : {{ product.price }} €
+                        Prix TTC: {{ product.ttc_price|floatformat }} €
                     </div>
                     <div class="box-btn">
 

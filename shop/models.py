@@ -1,5 +1,4 @@
-from django.contrib.auth import get_user_model, login
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
 
@@ -38,7 +37,8 @@ Product model
 class Product(models.Model):
     name = models.CharField(max_length=120)
     slug = models.SlugField(max_length=520, unique=True)
-    price = models.FloatField(default=0.0)
+    price = models.FloatField(default=0.00)
+    price_ttc = models.FloatField(default=0.00, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, default='')
     description = models.TextField(max_length=2500)
     image = models.ImageField(upload_to='products/', default='products/default.jpg', blank=True, null=True)
@@ -54,6 +54,11 @@ class Product(models.Model):
     # TVA 20%
     def tva(self):
         return self.price * 0.2
+
+    # Prix TTC
+    def ttc_price(self):
+        return self.price * 1.2
+
 
 
 
@@ -71,14 +76,12 @@ class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     ordered = models.BooleanField(default=False)
+    code_produit = models.CharField(max_length=120, default='', blank=True, null=True)
 
     # ordered_date = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.quantity} of {self.product.name}"
-
-    def get_total_item_price(self):
-        return self.quantity * self.product.price
 
     class Meta:
         verbose_name_plural = 'Orders'
@@ -92,7 +95,6 @@ class Order(models.Model):
 - Quantité integer
 - Commandé ou non boolean
 """
-
 
 
 class Cart(models.Model):
@@ -111,3 +113,15 @@ class Cart(models.Model):
             order.delete()
         super().delete(*args, **kwargs)
     '''
+
+
+class BillingAddressModelMixin(models.Model):
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
+    full_name = models.CharField("Full name", max_length=1024)
+    address1 = models.CharField("Address line 1", max_length=1024)
+    address2 = models.CharField("Address line 2", max_length=1024, blank=True, null=True)
+    zip_code = models.CharField("ZIP", max_length=12)
+    city = models.CharField("City", max_length=1024)
+
+    class Meta:
+        abstract = True

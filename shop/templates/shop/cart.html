@@ -49,10 +49,17 @@
   text-align: center;
 }
 
-.total-price {
-  font-size: 1em;
+.total-price, .total-tva {
+  font-size: 0.5em;
   text-align: end;
   font-style: italic;
+}
+
+/* Élément | http://127.0.0.1:8000/cart/ */
+
+.table-total-price {
+  display: flex;
+  justify-content: end;
 }
 
 </style>
@@ -84,10 +91,18 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                <!-- calcule prix total -->
-                <p class="text-light total-price">Total du panier(TTC) :
-                    <strong>{{ total }} €</strong>
-                </p>
+
+                <table class="table table-total-price table-condensed text-light">
+                    <tr>
+                        <td class="total-tva">Total (HTC) : {{ total }} €</td>
+                    </tr>
+                    <tr>
+                        <td class="total-price">Dont TVA : {{ total_tva }} €</td>
+                    </tr>
+                    <tr>
+                        <td class="total-price">Total (TTC) : {{ total_ttc }} €</td>
+                    </tr>
+                </table>
 
             <!-- bouton supprimer panier -->
                 <div class="box-btn">

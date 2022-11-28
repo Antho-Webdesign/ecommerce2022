@@ -7,14 +7,19 @@
                 <img src="{{ product.image.url }}" width="500px" height="500px" alt="">
             </div>
         </div>
-        <div class="col-md-6" style="justify-content: center; display: flex; flex-direction: column">
+        <div class="col-md-6" style="justify-content: center; display: flex; flex-direction: column;  font-size: 2em">
             <div class="text-warning display-3">
                 {{ product.name }}
             </div>
+
             <div class="text-danger">
-               Prix: {{ product.price }}€ <small class="text-muted">TTC</small>
+                Prix(ttc): {{ price_ttc }}€ <small class="text-muted">TTC</small>
             </div>
             <div style="width: 80% !important;">
+                <!--
+                TVA :{ product.tva } €
+                HTC :{ product.price }
+                -->
                 {{ product.description }}
             </div>
             <a href="{% url 'add_to_cart' product.slug %}">

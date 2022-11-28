@@ -38,7 +38,6 @@ def index(request):
     products_page = Paginator(products, 3)
     page_number = request.GET.get('page')
     page_obj = products_page.get_page(page_number)
-    total_tva = tva(request)
     if name := request.GET.get('search'):
         if request.method == 'GET':
             products = products.filter(name__icontains=name)  # icontains: i=ignore majuscule/minuscule,
@@ -46,9 +45,8 @@ def index(request):
     context = {
         'products': products,
         'categories': categories,
-        'cart': cart,
         'page_obj': page_obj,
-        'total_tva': total_tva,
+        # 'total_tva': total_tva,
     }
     return render(request, 'shop/index.html', context)
 
@@ -113,3 +111,7 @@ def delete_product_cart(request, slug):
             order.delete()
 
     return redirect("cart")
+
+
+def checkout(request):
+    return render(request, 'shop/checkout.html')

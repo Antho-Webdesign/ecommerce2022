@@ -1,4 +1,3 @@
-
 .navbar {
   background: black !important;
   color: #fff !important;
@@ -17,3 +16,15 @@
   color: #fff;
 }
 
+
+
+/**
+  * ===== Élément | details produit ===== 
+**/
+.display-3 {
+  margin: 75px 0 !important;
+}
+
+.product_details_box {
+  margin: 75px 0 !important;
+}

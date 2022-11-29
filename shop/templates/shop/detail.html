@@ -1,7 +1,8 @@
 {% extends 'shop/base.html' %}
-
+{% load static %}
 {% block content %}
-    <div class="row" style="align-items: center;">
+  
+<div class="row product_details_box" style="align-items: center;">
         <div class="col-md-6" style="display: flex; justify-content: center;">
             <div>
                 <img src="{{ product.image.url }}" width="500px" height="500px" alt="">

@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model, logout, login, authenticate
-from django.shortcuts import HttpResponseRedirect, render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
 
 from accounts.models import Profile
@@ -53,4 +53,26 @@ def edit_profile(request):
 
 
 def password_reset_form(request):
-    return render(request, 'accounts/password_reset_form.html')
+    if request.method == "POST" and request.POST.get("email"):
+        send_mail(
+            "Password reset",
+            "Password reset",
+            " ",
+            "Password reset",
+            [request.POST.get("email")],
+            fail_silently=False,
+        )
+        return redirect('registration/password_reset_form_done.html')
+    return render(request, 'registration/password_reset_form.html')
+
+
+
+def password_reset_form_done(request):
+    return render(request, 'registration/password_reset_form_done.html')
+
+def password_reset_confirm(request):
+    return render(request, 'registration/password_reset_confirm.html')
+
+def password_reset_complete(request):
+    return render(request, 'registration/password_reset_complete.html')
+

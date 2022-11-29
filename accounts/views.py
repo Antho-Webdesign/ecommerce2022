@@ -1,3 +1,5 @@
+import token
+import uuid
 from django.contrib.auth import get_user_model, logout, login, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
@@ -58,9 +60,10 @@ def password_reset_form(request):
         if user.email:
             send_mail(
                 "Password reset",
-                "You can reset your password here:" + request.build_absolute_uri("/accounts/password_reset/confirm/"),
+                "You can reset your password here:" + request.build_absolute_uri("/accounts/password_reset/confirm/") + 
+                ''' "/" + str(uidb64) + "/" + str(token),'''
                 " ",
-                [user.email],
+                [email],
                 fail_silently=False,
             )
             print(password_reset_confirm)
@@ -73,8 +76,8 @@ def password_reset_form(request):
 def password_reset_form_done(request):
     return render(request, 'accounts/registration/password_reset_done.html')
 
-def password_reset_confirm(request, uidb64, token):
-    return render(request, 'accounts/registration/password_reset_confirm.html', {'uidb64': uidb64, 'token': token})
+def password_reset_confirm(request):
+    return render(request, 'accounts/registration/password_reset_confirm.html')
 
 def password_reset_complete(request):
     return render(request, 'accounts/registration/password_reset_complete.html')

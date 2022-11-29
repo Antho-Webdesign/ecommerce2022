@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model, logout, login, authenticate
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import HttpResponseRedirect, render, redirect, get_object_or_404
+from django.core.mail import send_mail
 
 from accounts.models import Profile
 
@@ -49,3 +50,7 @@ def edit_profile(request):
     user = request.user
     profile = Profile.objects.get(user=user)
     return render(request, 'accounts/profile_update.html', {'profile': profile})
+
+
+def password_reset_form(request):
+    return render(request, 'accounts/password_reset_form.html')

@@ -1,0 +1,12 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset
+From:  
+To: anthony.di-dio@pm.me
+Date: Tue, 29 Nov 2022 20:05:32 -0000
+Message-ID: 
+ <166975233220.82277.9094421786288831973@1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa>
+
+You can reset your password here:http://127.0.0.1:8000/accounts/password_reset/confirm/
+-------------------------------------------------------------------------------

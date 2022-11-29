@@ -53,26 +53,30 @@ def edit_profile(request):
 
 
 def password_reset_form(request):
-    if request.method == "POST" and request.POST.get("email"):
-        send_mail(
-            "Password reset",
-            "Password reset",
-            " ",
-            "Password reset",
-            [request.POST.get("email")],
-            fail_silently=False,
-        )
-        return redirect('registration/password_reset_form_done.html')
-    return render(request, 'registration/password_reset_form.html')
+    if request.method == "POST":
+        email = request.POST.get("email")
+        user = User.objects.get(email=email)
+        if user.email:
+            send_mail(
+                "Password reset",
+                "You can reset your password here:" + request.build_absolute_uri("/accounts/password_reset/confirm/"),
+                " ",
+                [user.email],
+                fail_silently=False,
+            )
+            print(password_reset_confirm)
+            return redirect('password_reset_form_done')
+
+    return render(request, 'accounts/registration/password_reset_form.html')
 
 
 
 def password_reset_form_done(request):
-    return render(request, 'registration/password_reset_form_done.html')
+    return render(request, 'accounts/registration/password_reset_done.html')
 
 def password_reset_confirm(request):
-    return render(request, 'registration/password_reset_confirm.html')
+    return render(request, 'accounts/registration/password_reset_confirm.html')
 
 def password_reset_complete(request):
-    return render(request, 'registration/password_reset_complete.html')
+    return render(request, 'accounts/registration/password_reset_complete.html')
 

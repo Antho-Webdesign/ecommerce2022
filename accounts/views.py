@@ -4,12 +4,15 @@ from django.contrib.auth import get_user_model, logout, login, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
 from accounts.models import Profile
+from django.contrib.auth.forms import UserCreationForm
 
 User = get_user_model()
 
 
 # Create your views here.
-def signup(request):  # sourcery skip: last-if-guard
+def signup(request):
+    # form = UserCreationForm(request.POST)
+    # context = {'form': form}
     if request.method == "POST":
         # traiter le formulaire
         username = request.POST.get("username")

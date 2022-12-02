@@ -110,12 +110,17 @@ def delete_product_cart(request, slug):
     if product := get_object_or_404(Product, slug=slug):
         if order := Order.objects.filter(product=product):
             order.delete()
-
     return redirect("cart")
 
 
 def checkout(request):
-    return render(request, 'shop/checkout.html')
+    total = sum(order.product.price *
+                    order.quantity for order in request.user.cart.orders.all())
+    total_tva = tva(request)
+    total_ttc = total + total_tva
+    cart = get_object_or_404(Cart, user=request.user)
+    return render(request, 'shop/checkout.html',
+                  {"orders": cart.orders.all(), 'total': total, 'total_tva': total_tva, 'total_ttc': total_ttc})
 
 
 

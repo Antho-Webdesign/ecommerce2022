@@ -210,7 +210,6 @@
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
                 <h6 class="my-0">{{ order.product.name }} ({{ order.quantity }})</h6>
-                <small class="text-muted">{{ order.product.description }}</small>
               </div>
               <span class="text-muted">${{ order.product.price }}</span>
             </li>
@@ -248,6 +247,7 @@
 
           <!-- Promo code -->
           <form class="card p-2">
+            {% csrf_token %}
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2">
               <div class="input-group-append">

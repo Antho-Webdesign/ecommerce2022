@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import HttpResponseRedirect, get_object_or_404, render, redirect
 from django.urls import reverse
-from .forms import forms
+from .forms import ContactForm, forms
 
 from .models import Product, Cart, Order, Category
 
@@ -123,23 +123,12 @@ def checkout(request):
                   {"orders": cart.orders.all(), 'total': total, 'total_tva': total_tva, 'total_ttc': total_ttc})
 
 
-
 def contact_form_view(request):
-    return render(request, 'shop/contact_form.html')
-
-    
-
-def contact_form(form):
-    if form.is_valid():
-        subject = form.cleaned_data['subject']
-        message = form.cleaned_data['message']
-        sender = form.cleaned_data['sender']
-        cc_myself = form.cleaned_data['cc_myself']
-
-        recipients = ['info@example.com']
-        if cc_myself:
-            recipients.append(sender)
-            
-        send_mail(subject, message, sender, recipients)
-        return HttpResponseRedirect('/thanks/')
-
+    if request.method == 'POST':
+        form = forms.ContactForm(request.POST)
+        if form.is_valid():
+            ContactForm(form)
+            return redirect('contact')
+    else:
+        form = forms.ContactForm()
+    return render(request, 'shop/contact.html', {'form': form})

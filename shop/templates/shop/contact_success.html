@@ -1,0 +1,20 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        {% if user.is_authentificated %}
+        <h3 class="text-dark text-center bg-warning">Salut Mr/Mrs {{ user.username }}</h3>
+        <h4 class="text-muted">Merci de nous avoir contacté Mr/Mrs {{ user.username }}.
+            Nous avons recu votre demande, nous vous repondrons dès que possible.</h4>
+        {% else %}
+        <h3 class="text-dark text-center bg-warning">Bonjour !</h3>
+        <h4 class="text-muted">Merci de nous avoir contacté.
+            Nous avons recu votre demande, nous vous repondrons dès que possible.</h4>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

@@ -3,7 +3,7 @@ from django.shortcuts import HttpResponseRedirect, get_object_or_404, render, re
 from django.urls import reverse
 from .forms import ContactForm, forms
 
-from .models import Product, Cart, Order, Category
+from .models import ContactFormModelMixin, Product, Cart, Order, Category
 
 
 # base
@@ -125,10 +125,16 @@ def checkout(request):
 
 def contact_form_view(request):
     if request.method == 'POST':
-        form = forms.ContactForm(request.POST)
-        if form.is_valid():
-            ContactForm(form)
-            return redirect('contact')
-    else:
-        form = forms.ContactForm()
-    return render(request, 'shop/contact.html', {'form': form})
+        full_name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        contact = ContactFormModelMixin(full_name=full_name, email=email,subject=subject, message=message)
+        contact.save()
+        return HttpResponseRedirect(reverse('contact_success'))
+    return render(request, 'shop/contact_form.html')
+
+
+
+def contact_success(request):
+    return render(request, 'shop/contact_success.html')

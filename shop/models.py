@@ -125,3 +125,24 @@ class BillingAddressModelMixin(models.Model):
 
     class Meta:
         abstract = True
+
+
+class ContactFormModelMixin(models.Model):
+    full_name = models.CharField("Full name", max_length=1024)
+    email = models.EmailField("Email", max_length=1024)
+    subject = models.CharField("Subject", max_length=1024)
+    message = models.TextField("Message", max_length=1024)
+    cc_myself = models.BooleanField("CC myself", default=False)
+    date_sent = models.DateTimeField("Date sent", auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return self.full_name
+    class Meta:
+        verbose_name = "Contact form"
+        verbose_name_plural = "Contact forms"
+        ordering = ('full_name', 'date_sent', 'email', 'subject', 'message', 'cc_myself')
+
+    '''
+    def get_absolute_url(self):
+        return reverse("contact_form_detail", kwargs={"pk": self.pk})
+    '''

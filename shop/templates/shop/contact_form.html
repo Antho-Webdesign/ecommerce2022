@@ -1,23 +1,39 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    <label for="full_name">Nom complet:</label>
-    <input type="text" name="full_name" id="full_name" />
+<style>
+label {
+    font-size : 1.5em;
+}
+</style>
 
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" />
+<div class="container">
+    <div class="row">
+        <div class="card-header">
+            <h1 class="text-center mb-4 mt-4">Login form</h1>
+        </div>
+        <form method="post" class="mt-5 mb-5" style="justify-content: center; display: flex; margin: auto;">
+            {% csrf_token %}
+            <div class="form-group" style="width: 50%;">
+                <label for="full_name">Nom complet:</label>
+                <input class="form-control mb-3" type="text" name="full_name" id="full_name" />
 
-    <label for="subject">Sujet:</label>
-    <input type="text" name="subject" id="subject" />
+                <label for="email">Email:</label>
+                <input class="form-control mb-3" type="email" name="email" id="email" />
 
-    <label for="message">Message:</label>
-    <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                <label for="subject">Sujet:</label>
+                <input class="form-control mb-3" type="text" name="subject" id="subject" />
 
-    <label for="cc_myself">Envoyer une copie à moi-même</label>
-    <input type="checkbox" name="cc_myself" id="cc_myself" />
+                <label for="message">Message:</label>
+                <textarea class="form-control mb-3" name="message" id="message" cols="30" rows="10"></textarea>
 
-    <input type="submit" value="Submit">
-</form>
+                <label for="cc_myself">Envoyer une copie à moi-même</label>
+                <input type="checkbox" name="cc_myself" id="cc_myself" />
+
+                <input class="btn btn-success" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>
+
 {% endblock %}

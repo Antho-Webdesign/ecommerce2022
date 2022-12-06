@@ -1,29 +1,264 @@
+/* bootstrap = pointeur css d'originne */
+/* style = pointeur css créé */
+
+/* 
+  * ============ page base ============ * 
+*/
+
+@media (min-width: 992px) {
+  .titre-principale {
+    font-size: 2em;
+  }
+
+  .navbar-expand-lg .navbar-nav {
+    font-size: 1.32em;
+  }
+
+  .header-box {
+    background: black;
+    width: 100%;
+    margin: 0;
+  }
+
+  .footer-box {
+    background: black;
+    width: 100%;
+    margin: 0;
+  }
+
+  .text-dropdown {
+    font-size: 1.3em;
+    margin: auto;
+  }
+
+}
+
+.navbar {
+  background: black !important;
+  width: 90%;
+  justify-content: center;
+  margin: auto;
+}
+
+a {
+  color: #fff !important;
+}
+
+/* 
+  * ============ page index ============ * 
+*/
+.card-body {
+  width: 50%;
+  display: flex;
+  margin: auto;
+}
+
+form.card {
+  background: border-box;
+  padding: 30px;
+  margin: 50px auto;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0;
+}
+
+.card-body {
+  flex-direction: column;
+}
+
+.no-gutters {
+  justify-content: center;
+  width: 40%;
+  margin: auto;
+}
+
+.box-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-box-product {
+  display: flex;
+  width: 25%;
+}
+
+.pagination-box {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 30px auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+}
+
+@media screen and (max-width: 950px) {
+  .box-product {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .product-title {
+    font-size: 1.7em;
+  }
+
+  .card-body {
+    width: 100%;
+  }
+
+  .content-box-product {
+    margin: auto 30px;
+    padding: 0;
+  }
+
+  .box-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* 
+  * ============ page contact_form ============ * 
+*/
+label {
+  font-size: 1.5em;
+}
+
+/* 
+  * ============ page cart ============ * 
+*/
+
+.product_detail>img:nth-child(2) {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.product_detail>p:nth-child(3) {
+  text-align: center;
+}
+
+.box-btn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.btn-left {
+  display: flex;
+  width: 100%;
+}
+
+.btn-right {
+  display: flex;
+  width: 50%;
+}
+
+.box-btn {
+  justify-content: space-around;
+  margin: 75px auto;
+  flex-direction: row;
+}
+
+.btn-del-all {
+  width: 100%;
+}
+
+.table {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.total-price,
+.total-tva {
+  font-size: 0.5em;
+  text-align: end;
+  font-style: italic;
+}
+
+.table-total-price {
+  display: flex;
+  justify-content: end;
+}
+
+/* 
+  * ============ page cart ============ * 
+*/
+
+.bg-black {
+  background: #000;
+}
+
+.skill-block {
+  width: 30%;
+}
+
+.bg-primary {
+  background-color: grey !important;
+}
+
+.bg-success {
+  background-color: black !important;
+}
+
+.bg-warning {
+  background-color: purple !important;
+}
+
+.bg-danger {
+  background-color: #b01414 !important;
+}
+
+@media (min-width: 991px) and (max-width:1200px) {
+  .skill-block {
+    padding: 32px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .skill-block {
+    padding: 56px !important;
+  }
+}
+
+/* ---------- NAVIGATION ---------- */
+
+/* bootstrap | min.css */
 .navbar {
   background: black !important;
   color: #fff !important;
 }
 
-/* bootstrap.min.css | https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css */
-
 .navbar-light .navbar-brand {
-  /* color: rgba(0,0,0,.9); */
   color: #fff;
 }
-
-/* Élément | http://127.0.0.1:8000/ */
 
 #navbarNavDropdown {
   color: #fff;
 }
 
 
+/* 
+  * ============ PRODUITS ============ * 
+*/
 
-/**
-  * ===== Élément | details produit ===== 
-**/
+/* bootstrap | DETAILS PRODUITS */
+
 .display-3 {
   margin: 75px 0 !important;
 }
+
+/* style | DETAILS PRODUITS */
 
 .product_details_box {
   margin: 75px 0 !important;

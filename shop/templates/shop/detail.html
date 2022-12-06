@@ -2,35 +2,38 @@
 {% load static %}
 {% block content %}
 
-<div class="row product_details_box" style="align-items: center;">
+<div class="row product_details_box bg-gradient" style="align-items: center;">
 
-    <h1 class="text-center mb-5">
-        Bienvenue dans l'univers de<span class="text-primary fw-bold" style="font-size: 1.5em"> {{ product.marque_produit }}</span>
+    <h1 class="text-center titre-detail mb-5">
+        Bienvenue dans l'univers de : 
+        <br>
+        <span class="text-info fw-bold fst-italic p-3">
+        {{ product.marque_produit }}</span>
     </h1>
-
-    <div class="col-md-6" style="display: flex; justify-content: center;">
-        <div>
-            <img src="{{ product.image.url }}" width="500px" height="500px" alt="">
-        </div>
+    <!-- separateur -->
+    <div class="separateur border border-1" style="display: flex; width: 80%;">
     </div>
-    <div class="col-md-6" style="justify-content: center; display: flex; flex-direction: column;  font-size: 2em">
-        <div class="text-warning display-3">
-            {{ product.name }}
+    <div class="details_box">
+        <div class="col-md-6" style="display: flex; justify-content: center;">
+            <div>
+                <img src="{{ product.image.url }}" width="500px" height="500px" alt="">
+            </div>
         </div>
+        <div class="col-md-6" style="justify-content: center; display: flex; flex-direction: column;  font-size: 2em">
+            <div class="text-warning display-3">
+                {{ product.name }}
+            </div>
 
-        <div class="text-danger prix">
-            Prix(ttc): {{ price_ttc }}€ <small class="text-muted">TTC</small>
+            <div class="text-danger prix">
+                Prix : {{ price_ttc }}€ <small class="text-muted">TTC</small>
+            </div>
+            <div class="product-description">
+                {{ product.description }}
+            </div>
+            <a class="detail-btn-add" href="{% url 'add_to_cart' product.slug %}">
+                <button class="btn btn-success">Ajouter au panier</button>
+            </a>
         </div>
-        <div style="width: 80% !important;">
-            <!--
-                TVA :{ product.tva } €
-                HTC :{ product.price }
-                -->
-            {{ product.description }}
-        </div>
-        <a href="{% url 'add_to_cart' product.slug %}">
-            <button class="btn btn-success">Ajouter au panier</button>
-        </a>
     </div>
 </div>
 

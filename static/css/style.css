@@ -121,6 +121,11 @@ form.card {
   width: 45%;
 }
 
+.radius-10 {
+  border-radius: 10px;
+}
+
+
 @media screen and (max-width: 950px) {
   .box-product {
     flex-wrap: wrap;
@@ -191,14 +196,7 @@ label {
   text-align: center;
 }
 
-.box-btn {
-  display: flex;
-  justify-content: space-around;
-  margin: 75px auto;
-  flex-direction: row;
-  width: 100%;
-}
-
+/*
 .btn-left {
   display: flex;
   width: 50%;
@@ -210,7 +208,7 @@ label {
   width: 50%;
   justify-content: center;
 }
-
+*/
 .table {
   font-size: 1.5em;
   text-align: center;
@@ -312,15 +310,40 @@ label {
   margin: 80px 0;
 }
 
-/* style | DETAILS PRODUITS */
+.titre-detail {
+  margin-bottom: 5rem !important;
+  margin-top: 50px;
+}
 
-.product_details_box {
-  margin: 105px 0 !important;
+.details_box {
+  display: flex;
+  margin: 50px auto;
+  align-items: center;
+}
+
+.product-description {
+  width: 80% !important;
+  margin-bottom: 50px;
+}
+
+
+/* Élément | http://127.0.0.1:8000/product/air-pods-pro/ */
+
+.detail-btn-add {
+  margin: 80px 0;
 }
 
 /* 
   * ============ BTN:cart, index, etc ============ * 
 */
+.box-btn {
+  display: flex;
+  justify-content: space-around;
+  margin: 75px auto;
+  flex-direction: row;
+  width: 100%;
+}
+
 .btn-cart {
   width: 90% !important;
 }
@@ -332,8 +355,6 @@ label {
 .btn-right {
   width: 45%;
 }
-
-/* Élément | http://127.0.0.1:8000/cart/ */
 
 .btn-cart>a {
   width: 100%;

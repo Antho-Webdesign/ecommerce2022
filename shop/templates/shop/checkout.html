@@ -7,7 +7,7 @@
     <div class="container wow fadeIn">
 
       <!-- Heading -->
-      <h2 class="mb-5 h2 text-center">Paiement</h2>
+      <h1 class="mb-5 h2 text-center">Paiement</h1>
 
       <!--Grid row-->
       <div class="row">
@@ -16,10 +16,10 @@
         <div class="col-md-8 mb-4">
 
           <!--Card-->
-          <div class="card text-dark">
+          <div class="card card-checkout-infos text-dark">
               <h1 class="text-center mt-3 mb-5">Informations de livraison</h1>
             <!--Card content-->
-            <form class="card-body">
+            <form class="card-checkout-body">
                 {% csrf_token %}
               <!--Grid row-->
               <div class="row">
@@ -29,8 +29,8 @@
 
                   <!--firstName-->
                   <div class="md-form ">
-                    <input type="text" id="firstName" class="form-control">
-                    <label for="firstName" class="">First name</label>
+                    <label for="firstname" class="">Prénom</label>
+                    <input type="text" id="firstname" class="form-control">
                   </div>
 
                 </div>
@@ -41,8 +41,8 @@
 
                   <!--lastName-->
                   <div class="md-form">
-                    <input type="text" id="lastName" class="form-control">
-                    <label for="lastName" class="">Last name</label>
+                    <label for="lastname" class="">Nom</label>
+                    <input type="text" id="lastname" class="form-control">
                   </div>
 
                 </div>
@@ -52,29 +52,30 @@
               <!--Grid row-->
 
               <!--Username-->
-              <div class="md-form input-group pl-0 mb-5">
+              <div class="md-form input-group pl-0 mt-5 mb-5">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">@</span>
                 </div>
-                <input type="text" class="form-control py-0" placeholder="Username" aria-describedby="basic-addon1">
+                
+                <input type="text" class="form-control py-0" placeholder="Pseudo" aria-describedby="basic-addon1">
               </div>
 
               <!--email-->
               <div class="md-form mb-5">
-                <input type="text" id="email" class="form-control" placeholder="youremail@example.com">
-                <label for="email" class="">Email (optional)</label>
+                <label for="email" class="">Email</label>
+                <input type="text" id="email" class="form-control" placeholder="votre-mail@example.com">
               </div>
 
               <!--address-->
               <div class="md-form mb-5">
-                <input type="text" id="address" class="form-control" placeholder="1234 Main St">
-                <label for="address" class="">Address</label>
+                <label for="address" class="">Addresse</label>
+                <input type="text" id="address" class="form-control" placeholder="1234 Avenue ...">
               </div>
 
               <!--address-2-->
               <div class="md-form mb-5">
-                <input type="text" id="address-2" class="form-control" placeholder="Apartment or suite">
-                <label for="address-2" class="">Address 2 (optional)</label>
+                <label for="address-2" class="">Complément d'adresse (si besoin)</label>
+                <input type="text" id="address-2" class="form-control" placeholder="Ex: N° d'apartement">
               </div>
 
               <!--Grid row-->
@@ -83,13 +84,13 @@
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-12 mb-4">
 
-                  <label for="country">Country</label>
+                  <label for="country">Pays</label>
                   <select class="custom-select d-block w-100" id="country" required>
-                    <option value="">Choose...</option>
-                    <option>United States</option>
+                    <option value="">Choix...</option>
+                    <option>France</option>
                   </select>
                   <div class="invalid-feedback">
-                    Please select a valid country.
+                    Veuillez sélectionner un pays valide.
                   </div>
 
                 </div>
@@ -100,11 +101,11 @@
 
                   <label for="state">State</label>
                   <select class="custom-select d-block w-100" id="state" required>
-                    <option value="">Choose...</option>
-                    <option>California</option>
+                    <option value="">Choix...</option>
+                    <option>Auvergne</option>
                   </select>
                   <div class="invalid-feedback">
-                    Please provide a valid state.
+                    Veuillez fournir une région valide.
                   </div>
 
                 </div>
@@ -113,10 +114,10 @@
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-6 mb-4">
 
-                  <label for="zip">Zip</label>
+                  <label for="zip">Code postal</label>
                   <input type="text" class="form-control" id="zip" placeholder="" required>
                   <div class="invalid-feedback">
-                    Zip code required.
+                    Code postal requis.
                   </div>
 
                 </div>
@@ -196,11 +197,11 @@
         <!--Grid column-->
 
         <!--Grid column-->
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 card-cart-checkout">
 
           <!-- Heading -->
           <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Your cart</span>
+            <span class="text-muted">Votre panier</span>
             <span class="badge badge-secondary badge-pill">3</span>
           </h4>
 

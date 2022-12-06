@@ -219,6 +219,25 @@ label {
   background-color: #b01414 !important;
 }
 
+.card-cart-checkout {
+  height: 75%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.card-checkout-infos {
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+}
+
+.card-checkout-body {
+  display: flex;
+  flex-direction: column;
+}
+
+
 @media (min-width: 991px) and (max-width:1200px) {
   .skill-block {
     padding: 32px !important;

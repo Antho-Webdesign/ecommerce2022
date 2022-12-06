@@ -12,6 +12,10 @@ def base(request):
     item = items.id
     return render(request, 'shop/base.html', context={"items": items, "item": item})
 
+def navbar(request):
+    categories = Category.objects.all()
+    produits = Product.objects.all()
+    return render(request, 'shop/navbar.html', context={"categories": categories, "produits": produits})
 
 def tva(request):
     ttc = sum(order.product.price * order.quantity for order in request.user.cart.orders.all())

@@ -86,7 +86,7 @@ form.card {
 
 .no-gutters {
   justify-content: center;
-  width: 40%;
+  width: 100%;
   margin: auto;
 }
 
@@ -114,6 +114,13 @@ form.card {
   margin: auto;
 }
 
+form.card {
+  border: none;
+  display: flex;
+  justify-content: center;
+  width: 45%;
+}
+
 @media screen and (max-width: 950px) {
   .box-product {
     flex-wrap: wrap;
@@ -139,6 +146,30 @@ form.card {
     width: 100%;
   }
 }
+
+/* 
+  * ============ page profile ============ * 
+*/
+.container-profile {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  justify-content: center;
+  margin: auto;
+}
+
+.img-profile {
+  width: 33%;
+  border-radius: 50px;
+}
+
+.updt-profile {
+  justify-content: center;
+  display: flex;
+  margin: 30px auto;
+}
+
+
 
 /* 
   * ============ page contact_form ============ * 

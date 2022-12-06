@@ -50,7 +50,6 @@ def index(request):
     if name := request.GET.get('search'):
         if request.method == 'GET':
             products = products.filter(name__icontains=name)  # icontains: i=ignore majuscule/minuscule,
-
     context = {
         'products': products,
         'categories': categories,
@@ -60,12 +59,16 @@ def index(request):
 
 
 def filter_by_category(request, slug):
-    category = Category.objects.get(slug=slug)
-    products = Product.objects.filter(category=category)
+    categories = Category.objects.all()
+    products = Product.objects.all()
+    if request.method == 'GET':
+        category = Category.objects.get(slug=slug)
+        products = Product.objects.filter(category=category)
     # categories = Category.objects.all()
     context = {
         'products': products,
-        'category': category
+        'category': category,
+        'categories': categories,
     }
     return render(request, 'shop/index.html', context)
 

@@ -13,9 +13,13 @@ def base(request):
     return render(request, 'shop/base.html', context={"items": items, "item": item})
 
 def navbar(request):
+    products = Product.objects.all()
     categories = Category.objects.all()
-    produits = Product.objects.all()
-    return render(request, 'shop/navbar.html', context={"categories": categories, "produits": produits})
+    context = {
+        'products': products,
+        'categories': categories,
+    }
+    return render(request, 'shop/navbar.html', context)
 
 def tva(request):
     ttc = sum(order.product.price * order.quantity for order in request.user.cart.orders.all())
@@ -51,7 +55,6 @@ def index(request):
         'products': products,
         'categories': categories,
         'page_obj': page_obj,
-        # 'total_tva': total_tva,
     }
     return render(request, 'shop/index.html', context)
 
@@ -60,7 +63,6 @@ def filter_by_category(request, slug):
     category = Category.objects.get(slug=slug)
     products = Product.objects.filter(category=category)
     # categories = Category.objects.all()
-
     context = {
         'products': products,
         'category': category
@@ -70,9 +72,17 @@ def filter_by_category(request, slug):
 
 # product_detail
 def product_detail(request, slug):
+    products = Product.objects.all()
+    categories = Category.objects.all()
     product = get_object_or_404(Product, slug=slug)
     price_ttc = product.price * 1.2
-    return render(request, 'shop/detail.html', context={"product": product, 'price_ttc': price_ttc})
+    context = {
+        'product': product,
+        'products': products,
+        'categories': categories,
+        'price_ttc': price_ttc,
+    }
+    return render(request, 'shop/detail.html', context)
 
 
 def add_to_cart(request, slug):
@@ -92,13 +102,22 @@ def add_to_cart(request, slug):
 
 
 def cart(request):
+    products = Product.objects.all()
+    categories = Category.objects.all()
     total = sum(order.product.price * order.quantity for order in request.user.cart.orders.all())
     total_tva = tva(request)
     total_ttc = total + total_tva
     cart = get_object_or_404(Cart, user=request.user)
-    return render(request, 'shop/cart.html',
-                  {"orders": cart.orders.all(), 'total': total, 'total_tva': total_tva, 'total_ttc': total_ttc})
-    # return render(request, "shop/cart.html", context={"orders": cart.orders.all()})
+
+    context = {
+        'products': products,
+        'categories': categories,
+        'cart': cart,
+        'total': total,
+        'total_tva': total_tva,
+        'total_ttc': total_ttc,
+    }
+    return render(request, 'shop/cart.html', context)
 
 
 def delete_cart(request):
@@ -118,16 +137,31 @@ def delete_product_cart(request, slug):
 
 
 def checkout(request):
+    products = Product.objects.all()
+    categories = Category.objects.all()
     total = sum(order.product.price *
                     order.quantity for order in request.user.cart.orders.all())
     total_tva = tva(request)
     total_ttc = total + total_tva
     cart = get_object_or_404(Cart, user=request.user)
-    return render(request, 'shop/checkout.html',
-                  {"orders": cart.orders.all(), 'total': total, 'total_tva': total_tva, 'total_ttc': total_ttc})
+    context = {
+        'products': products,
+        'categories': categories,
+        'cart': cart,
+        'total': total,
+        'total_tva': total_tva,
+        'total_ttc': total_ttc,
+    }
+    return render(request, 'shop/checkout.html', context)
 
 
 def contact_form_view(request):
+    products = Product.objects.all()
+    categories = Category.objects.all()
+    context = {
+        'products': products,
+        'categories': categories,
+    }
     if request.method == 'POST':
         full_name = request.POST.get('full_name')
         email = request.POST.get('email')
@@ -136,9 +170,15 @@ def contact_form_view(request):
         contact = ContactFormModelMixin(full_name=full_name, email=email,subject=subject, message=message)
         contact.save()
         return HttpResponseRedirect(reverse('contact_success'))
-    return render(request, 'shop/contact_form.html')
+    return render(request, 'shop/contact_form.html', context)
 
 
 
 def contact_success(request):
-    return render(request, 'shop/contact_success.html')
+    products = Product.objects.all()
+    categories = Category.objects.all()
+    context = {
+        'products': products,
+        'categories': categories,
+    }
+    return render(request, 'shop/contact_success.html', context)

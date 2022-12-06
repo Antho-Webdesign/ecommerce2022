@@ -2,6 +2,12 @@
 /* style = pointeur css créé */
 
 /* 
+  * ============ page navbar ============ * 
+*/
+.card-box {
+  display: flex !important;
+}
+/* 
   * ============ page base ============ * 
 */
 

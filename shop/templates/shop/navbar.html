@@ -62,11 +62,14 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     {% for order in user.cart.orders.all %}
-                                        <div class="cart-box">
+                                        <div class="cart-box p-3" style="display: flex;">
                                             <a class="dropdown-item text-dark text-dropdown" href="{% url 'detail' order.product.slug %}">
-                                                {{ order.product.name }}</a>
-                                            <a class="btn btn-danger text-end m-auto" href="{% url 'delete-product-cart' order.product.slug %}">
-                                                X
+                                                {{ order.product.name }}
+                                                <em>
+                                                    <a class="btn btn-danger text-end m-auto" href="{% url 'delete-product-cart' order.product.slug %}">
+                                                        X
+                                                    </a>
+                                                </em>
                                             </a>
                                         </div>
                                     {% endfor %}

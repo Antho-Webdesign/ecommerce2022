@@ -3,54 +3,54 @@
 
 {% block content %}
 
-    <div class="container-profile mt-5 mb-5">
+<div class="container-profile mt-5 mb-5">
     {% if user.is_authenticated %}
-            <div class="row no-gutters">
-                    <img class="img-profile" src="{{ profile.image.url }}">
+    <div class="row no-gutters">
+        <img class="img-profile" src="{{ profile.image.url }}">
 
-                    <div class="d-flex flex-column">
-                        <div class="d-flex flex-row justify-content-between align-items-center p-5 bg-dark text-white">
-                            <h3 class="display-5">{{ user.first_name }} {{ user.last_name }}</h3>
+        <div class="d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between align-items-center p-5 bg-dark text-white">
+                <h3 class="display-5">{{ user.first_name }} {{ user.last_name }}</h3>
 
-                            <a class="nav-link" href="{% url 'cart' %}">
-                                <i href="{% url 'cart' %}" class="fa fa-2x fa-cart-plus"></i>
-                                <!-- <img src="media/images/panier.png" alt="" style="width:25%"> -->
-                                {{ user.cart.orders.count }}
-                            </a>
-                            <a href="{% url 'profile' %}">
-                                <i class="fa fa-2x fa-user"></i>
-                            </a>
-                            <a href="#" data-popup="Ajouter un compte paypal">
-                                <i class="fa fa-2x fa-paypal"></i>
-                            </a>
-                            <a href="#" data-popup="Ajouter une carte bancaire">
-                                <i class="fa fa-2x fa-cc-visa"></i>
-                            </a>
+                <a class="nav-link" href="{% url 'cart' %}">
+                    <i href="{% url 'cart' %}" class="fa fa-2x fa-cart-plus"></i>
+                    <!-- <img src="media/images/panier.png" alt="" style="width:25%"> -->
+                    {{ user.cart.orders.count }}
+                </a>
+                <a href="{% url 'profile' %}">
+                    <i class="fa fa-2x fa-user"></i>
+                </a>
+                <a href="#" data-popup="Ajouter un compte paypal">
+                    <i class="fa fa-2x fa-paypal"></i>
+                </a>
+                <a href="#" data-popup="Ajouter une carte bancaire">
+                    <i class="fa fa-2x fa-cc-visa"></i>
+                </a>
 
-                        </div>
-                        <div class="p-3 bg-black text-white">
-                            <h6>Inscrit depuis le : {{ user.date_joined|date:"d/m/Y" }}</h6>
-                        </div>
-                        <div class="d-flex flex-row text-white">
-                            <div class="p-4 bg-primary text-center skill-block">
-                                <h4>Adresse</h4>
-                                <h6>{{ user.profile.address }}</h6>
-                            </div>
-                            <div class="p-3 bg-success text-center skill-block">
-                                <h4>Ville</h4>
-                                <h6>{{ user.profile.city }}</h6>
-                            </div>
-                            <div class="p-3 bg-warning text-center skill-block">
-                                <h4>Région</h4>
-                                <h6>{{ user.profile.state }}</h6>
-                            </div>
-                            <div class="p-3 bg-danger text-center skill-block">
-                                <h4>Pays</h4>
-                                <h6>{{ user.profile.country }}</h6>
-                            </div>
-                        </div>
-                    </div>
             </div>
+            <div class="p-3 bg-black text-white">
+                <h6>Inscrit depuis le : {{ user.date_joined|date:"d/m/Y" }}</h6>
+            </div>
+            <div class="d-flex flex-row text-white">
+                <div class="p-4 bg-primary text-center skill-block">
+                    <h4>Adresse</h4>
+                    <h6>{{ user.profile.address }}</h6>
+                </div>
+                <div class="p-3 bg-success text-center skill-block">
+                    <h4>Ville</h4>
+                    <h6>{{ user.profile.city }}</h6>
+                </div>
+                <div class="p-3 bg-warning text-center skill-block">
+                    <h4>Région</h4>
+                    <h6>{{ user.profile.state }}</h6>
+                </div>
+                <div class="p-3 bg-danger text-center skill-block">
+                    <h4>Pays</h4>
+                    <h6>{{ user.profile.country }}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
     {% endif %}
     <a href="{% url 'edit-profile' %}">
         <button class="btn updt-profile btn-success fs-5">Modifier mon profile</button>
@@ -59,45 +59,45 @@
 
 
 
-    {% comment %}
+{% comment %}
 <div class="title text-center mb-5">
     <h1>Mes infos</h1>
 </div>
-    {% if user.is_authenticated %}
-    <div class="profile text-center">
-        <img src="{{ profile.image.url }}" alt="img" style="width: 25%; border-radius:100px;" class="mb-4 ">
-        <div class="mb-4">
-            <h2>Username: {{ user.username }}</h2>
-        </div>
-        <div class="mb-4">
-            <h2>Email: {{ user.email }}</h2>
-        </div>
-        <div class="mb-4">
-            <h2>First Name: {{ user.first_name }}</h2>
-        </div>
-        <div class="mb-4">
-            <h2>Last Name: {{ user.last_name }}</h2>
-        </div>
-        <div class="mb-2">
-            <h2>Address: {{ user.profile.address }}</h2>
-        </div>
-        <div class="mb-4">
-            <h2>Phone Number: {{ user.profile.phone_number }}</h2>
-        </div>
-        <div class="mb-4">
-            <h2>City: {{ user.profile.city }}</h2>
-        </div>
-        <div class="mb-4">
-            <h2>Zip Code: {{ user.profile.zip_code }}</h2>
-        </div>
-        <div class="mb-4">
-            <h2>Country: {{ user.profile.country }}</h2>
-        </div>
-        <div class="mb-4">
-            <h2 class="mb-2">State: {{ user.profile.state }}</h2>
-        </div>
+{% if user.is_authenticated %}
+<div class="profile text-center">
+    <img src="{{ profile.image.url }}" alt="img" style="width: 25%; border-radius:100px;" class="mb-4 ">
+    <div class="mb-4">
+        <h2>Username: {{ user.username }}</h2>
     </div>
-    {% endif %}
-    <a href="{% url 'edit-profile' %}" class="btn btn-primary">Update</a>
+    <div class="mb-4">
+        <h2>Email: {{ user.email }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>First Name: {{ user.first_name }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>Last Name: {{ user.last_name }}</h2>
+    </div>
+    <div class="mb-2">
+        <h2>Address: {{ user.profile.address }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>Phone Number: {{ user.profile.phone_number }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>City: {{ user.profile.city }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>Zip Code: {{ user.profile.zip_code }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>Country: {{ user.profile.country }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2 class="mb-2">State: {{ user.profile.state }}</h2>
+    </div>
+</div>
+{% endif %}
+<a href="{% url 'edit-profile' %}" class="btn btn-primary">Update</a>
 {% endcomment %}
 {% endblock %}

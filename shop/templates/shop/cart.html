@@ -5,61 +5,62 @@
 
 
 </style>
-    <div class="container">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
             <h1 class="text-center mt-5 mb-5">Panier</h1>
 
             {% if user.cart %}
-                <table class="table table-striped text-light">
-                    <thead>
-                        <tr>
-                            <th>Produit(s)</th>
-                            <th>Quantité(s)</th>
-                            <th>Prix</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for order in orders %}
-                            <tr>
-                                <td class="text-light">{{ order.product.name }}</td>
-                                <td class="text-light">{{ order.quantity }}</td>
-                                <td class="text-light">{{ order.product.price }}</td>
-                                <td>
-                                    <a class="btn btn-danger" href="{% url 'delete-product-cart' order.product.slug %}">Supprimer</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <table class="table table-striped text-light">
+                <thead>
+                    <tr>
+                        <th>Produit(s)</th>
+                        <th>Quantité(s)</th>
+                        <th>Prix</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td class="text-light">{{ order.product.name }}</td>
+                        <td class="text-light">{{ order.quantity }}</td>
+                        <td class="text-light">{{ order.product.price }}</td>
+                        <td>
+                            <a class="btn btn-danger"
+                                href="{% url 'delete-product-cart' order.product.slug %}">Supprimer</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-                <table class="table table-total-price table-condensed text-light">
-                    <tr>
-                        <td class="total-tva">Total (HTC) : {{ total }} €</td>
-                    </tr>
-                    <tr>
-                        <td class="total-price">Dont TVA : {{ total_tva }} €</td>
-                    </tr>
-                    <tr>
-                        <td class="total-price">Total (TTC) : {{ total_ttc }} €</td>
-                    </tr>
-                </table>
+            <table class="table table-total-price table-condensed text-light">
+                <tr>
+                    <td class="total-tva">Total (HTC) : {{ total }} €</td>
+                </tr>
+                <tr>
+                    <td class="total-price">Dont TVA : {{ total_tva }} €</td>
+                </tr>
+                <tr>
+                    <td class="total-price">Total (TTC) : {{ total_ttc }} €</td>
+                </tr>
+            </table>
 
             <!-- bouton supprimer panier -->
-                <div class="box-btn">
+            <div class="box-btn">
 
-                        <div class="btn-left">
-                            <a href="{% url 'checkout' %}" class="btn btn-success">Payer</a>
-                        </div>
+                <div class="btn-left">
+                    <a href="{% url 'checkout' %}" class="btn btn-success">Payer</a>
+                </div>
 
-                        <div class="btn-right">
-                            <a class="btn btn-danger btn-del-all" href="{% url 'delete-cart' %}">Supprimer tout le panier</a>
-                        </div>
+                <div class="btn-right">
+                    <a class="btn btn-danger btn-del-all" href="{% url 'delete-cart' %}">Supprimer tout le panier</a>
+                </div>
 
-                    </div>
+            </div>
             {% else %}
-                <p class="text-light">Votre panier est vide</p>
+            <p class="text-light">Votre panier est vide</p>
 
             {% endif %}
 

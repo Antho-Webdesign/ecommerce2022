@@ -3,268 +3,271 @@
 
 {% block content %}
 <!--Main layout-->
-  <main class="mt-5 pt-4">
-    <div class="container wow fadeIn">
+<main class="mt-5 pt-4">
+  <div class="container wow fadeIn">
 
-      <!-- Heading -->
-      <h1 class="mb-5 h2 text-center">Paiement</h1>
+    <!-- Heading -->
+    <h1 class="mb-5 h2 text-center">Paiement</h1>
 
-      <!--Grid row-->
-      <div class="row">
+    <!--Grid row-->
+    <div class="row">
 
-        <!--Grid column-->
-        <div class="col-md-8 mb-4">
+      <!--Grid column-->
+      <div class="col-md-8 mb-4">
 
-          <!--Card-->
-          <div class="card card-checkout-infos text-dark">
-              <h1 class="text-center mt-3 mb-5">Informations de livraison</h1>
-            <!--Card content-->
-            <form class="card-checkout-body">
-                {% csrf_token %}
-              <!--Grid row-->
-              <div class="row">
-
-                <!--Grid column-->
-                <div class="col-md-6 mb-2 ">
-
-                  <!--firstName-->
-                  <div class="md-form ">
-                    <label for="firstname" class="">Prénom</label>
-                    <input type="text" id="firstname" class="form-control">
-                  </div>
-
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-md-6 mb-2">
-
-                  <!--lastName-->
-                  <div class="md-form">
-                    <label for="lastname" class="">Nom</label>
-                    <input type="text" id="lastname" class="form-control">
-                  </div>
-
-                </div>
-                <!--Grid column-->
-
-              </div>
-              <!--Grid row-->
-
-              <!--Username-->
-              <div class="md-form input-group pl-0 mt-5 mb-5">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1">@</span>
-                </div>
-                
-                <input type="text" class="form-control py-0" placeholder="Pseudo" aria-describedby="basic-addon1">
-              </div>
-
-              <!--email-->
-              <div class="md-form mb-5">
-                <label for="email" class="">Email</label>
-                <input type="text" id="email" class="form-control" placeholder="votre-mail@example.com">
-              </div>
-
-              <!--address-->
-              <div class="md-form mb-5">
-                <label for="address" class="">Addresse</label>
-                <input type="text" id="address" class="form-control" placeholder="1234 Avenue ...">
-              </div>
-
-              <!--address-2-->
-              <div class="md-form mb-5">
-                <label for="address-2" class="">Complément d'adresse (si besoin)</label>
-                <input type="text" id="address-2" class="form-control" placeholder="Ex: N° d'apartement">
-              </div>
-
-              <!--Grid row-->
-              <div class="row">
-
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-12 mb-4">
-
-                  <label for="country">Pays</label>
-                  <select class="custom-select d-block w-100" id="country" required>
-                    <option value="">Choix...</option>
-                    <option>France</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Veuillez sélectionner un pays valide.
-                  </div>
-
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-6 mb-4">
-
-                  <label for="state">State</label>
-                  <select class="custom-select d-block w-100" id="state" required>
-                    <option value="">Choix...</option>
-                    <option>Auvergne</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Veuillez fournir une région valide.
-                  </div>
-
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-6 mb-4">
-
-                  <label for="zip">Code postal</label>
-                  <input type="text" class="form-control" id="zip" placeholder="" required>
-                  <div class="invalid-feedback">
-                    Code postal requis.
-                  </div>
-
-                </div>
-                <!--Grid column-->
-
-              </div>
-              <!--Grid row-->
-
-              <hr>
-
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="same-address">
-                <label class="custom-control-label" for="same-address">L'adresse de livraison est la même que mon adresse de facturation</label>
-              </div>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="save-info">
-                <label class="custom-control-label" for="save-info">Conservez ces informations pour la prochaine fois</label>
-              </div>
-
-              <hr>
-
-              <div class="d-block my-3">
-                <div class="custom-control custom-radio">
-                  <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                  <label class="custom-control-label" for="credit">Carte de crédit</label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                  <label class="custom-control-label" for="debit">Carte de débit</label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                  <label class="custom-control-label" for="paypal">Paypal</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="cc-name">Nom sur la carte</label>
-                  <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                  <small class="text-muted">Nom complet tel qu'il apparaît sur la carte</small>
-                  <div class="invalid-feedback">
-                    Le nom sur la carte est requis
-                  </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="cc-number">Credit card number</label>
-                  <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                  <div class="invalid-feedback">
-                    Le numéro de carte de crédit est requis</div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-3 mb-3">
-                  <label for="cc-expiration">Expiration</label>
-                  <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                  <div class="invalid-feedback">
-                    La date d'expiration est requis
-                  </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                  <label for="cc-expiration">CVV</label>
-                  <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                  <div class="invalid-feedback">
-                    Le code de sécurité est requis
-                  </div>
-                </div>
-              </div>
-              <hr class="mb-4">
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Continuer à payer</button>
-
-            </form>
-
-          </div>
-          <!--/.Card-->
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-4 mb-4 card-cart-checkout">
-
-          <!-- Heading -->
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Votre panier</span>
-            <span class="badge badge-secondary badge-pill">3</span>
-          </h4>
-
-          <!-- Cart -->
-          <ul class="list-group mb-3 z-depth-1">
-            {% for order in orders %}
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">{{ order.product.name }} ({{ order.quantity }})</h6>
-              </div>
-              <span class="text-muted">${{ order.product.price }}</span>
-            </li>
-            {% endfor %}
-
-            
-            <li class="list-group-item d-flex justify-content-between bg-light">
-              <div class="text-success">
-                <h6 class="my-0">Promo code</h6>
-                <small>ici :{ order.product.reduce }</small>
-              </div>
-              <span class="text-success">-$5</span>
-            </li>
-
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total 
-                <em>(Htc)</em>
-              </span>
-              <strong>€{{ total }}</strong>
-            </li>
-
-            <li class="list-group-item d-flex justify-content-between">
-              <span>TVA</span>
-              <strong>€{{ total_tva }}</strong>
-            </li>
-
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total 
-                <em>(Ttc)</em>
-              </span>
-              <strong>€{{ total_ttc }}</strong>
-            </li>
-          </ul>
-          <!-- Cart -->
-
-          <!-- Promo code -->
-          <form class="card p-2">
+        <!--Card-->
+        <div class="card card-checkout-infos text-dark">
+          <h1 class="text-center mt-3 mb-5">Informations de livraison</h1>
+          <!--Card content-->
+          <form class="card-checkout-body">
             {% csrf_token %}
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-secondary btn-md waves-effect m-0" type="button">Valider</button>
+            <!--Grid row-->
+            <div class="row">
+
+              <!--Grid column-->
+              <div class="col-md-6 mb-2 ">
+
+                <!--firstName-->
+                <div class="md-form ">
+                  <label for="firstname" class="">Prénom</label>
+                  <input type="text" id="firstname" class="form-control">
+                </div>
+
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-6 mb-2">
+
+                <!--lastName-->
+                <div class="md-form">
+                  <label for="lastname" class="">Nom</label>
+                  <input type="text" id="lastname" class="form-control">
+                </div>
+
+              </div>
+              <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+            <!--Username-->
+            <div class="md-form input-group pl-0 mt-5 mb-5">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">@</span>
+              </div>
+
+              <input type="text" class="form-control py-0" placeholder="Pseudo" aria-describedby="basic-addon1">
+            </div>
+
+            <!--email-->
+            <div class="md-form mb-5">
+              <label for="email" class="">Email</label>
+              <input type="text" id="email" class="form-control" placeholder="votre-mail@example.com">
+            </div>
+
+            <!--address-->
+            <div class="md-form mb-5">
+              <label for="address" class="">Addresse</label>
+              <input type="text" id="address" class="form-control" placeholder="1234 Avenue ...">
+            </div>
+
+            <!--address-2-->
+            <div class="md-form mb-5">
+              <label for="address-2" class="">Complément d'adresse (si besoin)</label>
+              <input type="text" id="address-2" class="form-control" placeholder="Ex: N° d'apartement">
+            </div>
+
+            <!--Grid row-->
+            <div class="row">
+
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-12 mb-4">
+
+                <label for="country">Pays</label>
+                <select class="custom-select d-block w-100" id="country" required>
+                  <option value="">Choix...</option>
+                  <option>France</option>
+                </select>
+                <div class="invalid-feedback">
+                  Veuillez sélectionner un pays valide.
+                </div>
+
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-6 mb-4">
+
+                <label for="state">State</label>
+                <select class="custom-select d-block w-100" id="state" required>
+                  <option value="">Choix...</option>
+                  <option>Auvergne</option>
+                </select>
+                <div class="invalid-feedback">
+                  Veuillez fournir une région valide.
+                </div>
+
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-6 mb-4">
+
+                <label for="zip">Code postal</label>
+                <input type="text" class="form-control" id="zip" placeholder="" required>
+                <div class="invalid-feedback">
+                  Code postal requis.
+                </div>
+
+              </div>
+              <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+            <hr>
+
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="same-address">
+              <label class="custom-control-label" for="same-address">L'adresse de livraison est la même que mon adresse
+                de facturation</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="save-info">
+              <label class="custom-control-label" for="save-info">Conservez ces informations pour la prochaine
+                fois</label>
+            </div>
+
+            <hr>
+
+            <div class="d-block my-3">
+              <div class="custom-control custom-radio">
+                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                <label class="custom-control-label" for="credit">Carte de crédit</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="debit">Carte de débit</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="paypal">Paypal</label>
               </div>
             </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="cc-name">Nom sur la carte</label>
+                <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                <small class="text-muted">Nom complet tel qu'il apparaît sur la carte</small>
+                <div class="invalid-feedback">
+                  Le nom sur la carte est requis
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cc-number">Credit card number</label>
+                <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                <div class="invalid-feedback">
+                  Le numéro de carte de crédit est requis</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">Expiration</label>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                <div class="invalid-feedback">
+                  La date d'expiration est requis
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">CVV</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                <div class="invalid-feedback">
+                  Le code de sécurité est requis
+                </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continuer à payer</button>
+
           </form>
-          <!-- Promo code -->
 
         </div>
-        <!--Grid column-->
+        <!--/.Card-->
 
       </div>
-      <!--Grid row-->
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-4 mb-4 card-cart-checkout">
+
+        <!-- Heading -->
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Votre panier</span>
+          <span class="badge badge-secondary badge-pill">3</span>
+        </h4>
+
+        <!-- Cart -->
+        <ul class="list-group mb-3 z-depth-1">
+          {% for order in orders %}
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">{{ order.product.name }} ({{ order.quantity }})</h6>
+            </div>
+            <span class="text-muted">${{ order.product.price }}</span>
+          </li>
+          {% endfor %}
+
+
+          <li class="list-group-item d-flex justify-content-between bg-light">
+            <div class="text-success">
+              <h6 class="my-0">Promo code</h6>
+              <small>ici :{ order.product.reduce }</small>
+            </div>
+            <span class="text-success">-$5</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total
+              <em>(Htc)</em>
+            </span>
+            <strong>€{{ total }}</strong>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between">
+            <span>TVA</span>
+            <strong>€{{ total_tva }}</strong>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total
+              <em>(Ttc)</em>
+            </span>
+            <strong>€{{ total_ttc }}</strong>
+          </li>
+        </ul>
+        <!-- Cart -->
+
+        <!-- Promo code -->
+        <form class="card p-2">
+          {% csrf_token %}
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username"
+              aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-secondary btn-md waves-effect m-0" type="button">Valider</button>
+            </div>
+          </div>
+        </form>
+        <!-- Promo code -->
+
+      </div>
+      <!--Grid column-->
 
     </div>
-  </main>
-  <!--Main layout-->
+    <!--Grid row-->
+
+  </div>
+</main>
+<!--Main layout-->
 {% endblock %}

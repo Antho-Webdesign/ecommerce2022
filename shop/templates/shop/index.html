@@ -43,17 +43,16 @@
     <!--/.Navbar-->
     {% for product in products %}
     <div class="col-md-5 mb-5 content-box-product">
-        <div class="card"
-            style="width: 80%; display: flex; justify-content: center; margin: auto; background: transparent; border: none">
+        <div class="card" style="width: 80%; display: flex; justify-content: center; margin: auto; background: transparent; border: none">
             <div id="aa{{ product.id }}" class="card-title">
-                <h1 class="text-center product-title radius-10 text-bg-primary">{{ product.name }}</h1>
-                <p class="radius-10 text-center fs-5 fst-italic text-text-bg-info bg-gradient">Fabriquant: {{ product.marque_produit }}</p>
+                <h1 class="text-center product-title radius-10 text-light">{{ product.name }}</h1>
+                <p class="radius-10 text-center fs-5 fst-italic text-info bg-gradient">Fabriquant: {{ product.marque_produit }}</p>
             </div>
 
             <img src="{{ product.image.url }}" alt="" class="card-ing-top">
 
             <div class="card-body">
-                <div id="price price{{ product.id }}" class="card-text mb-5 fw-bold fs-3 text-center text-warning">
+                <div id="price price{{ product.id }}" class="card-text mb-5 fw-bold fs-3 text-center text-danger">
                     Prix (ttc): 
                     <br>
                     {{ product.ttc_price|floatformat:2 }} €
@@ -62,7 +61,7 @@
                 <div class="box-btn">
 
                     <div class="btn-left">
-                        <a href="{% url 'detail' product.slug %}" class="btn btn-primary">Détails</a>
+                        <a href="{% url 'detail' product.slug %}" class="btn btn-warning">Détails</a>
                     </div>
 
                     <div class="btn-right">

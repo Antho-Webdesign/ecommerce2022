@@ -145,6 +145,42 @@ form.card {
     padding: 0;
   }
 
+  @media screen and (max-width: 650px) {
+    .content-box-product {
+      display: flex;
+      flex-wrap: wrap;
+      margin: auto;
+      width: 90%;
+      justify-content: center;
+    }
+
+    .details_box {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .product-description {
+      display: flex;
+      justify-content: center;
+      margin: auto;
+    }
+
+    .container-img {
+      margin: auto;
+    }
+
+    .box-img {
+      display: flex;
+      justify-content: center;
+    }
+
+    .product-description {
+      margin: auto;
+      text-align: center;
+    }
+
+  }
+
   .box-btn {
     display: flex;
     justify-content: center;
@@ -331,6 +367,11 @@ label {
 
 .detail-btn-add {
   margin: 80px 0;
+}
+
+.img-detail {
+  width: 66%;
+  height: 100%;
 }
 
 /* 

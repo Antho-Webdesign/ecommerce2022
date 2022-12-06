@@ -14,12 +14,15 @@
     <div class="separateur border border-1" style="display: flex; width: 80%;">
     </div>
     <div class="details_box">
-        <div class="col-md-6" style="display: flex; justify-content: center;">
-            <div>
-                <img src="{{ product.image.url }}" width="500px" height="500px" alt="">
+        <div class="col-md-6 container-img" style="display: flex; justify-content: center;">
+            <div class="box-img">
+                <img src="{{ product.image.url }}" class="img-detail" alt="">
             </div>
+            <!--
+                <img class="image" src="https://www.apple.com/v/macbook-pro-13/m/images/overview/retina_hero_screen__gddr9b8m4kuq_large.jpg" alt="">
+            -->
         </div>
-        <div class="col-md-6" style="justify-content: center; display: flex; flex-direction: column;  font-size: 2em">
+        <div class="col-md-6 text-center justify-content-center flex-column fs-2" style="display: flex;">
             <div class="text-warning display-3">
                 {{ product.name }}
             </div>

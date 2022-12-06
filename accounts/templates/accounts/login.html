@@ -3,21 +3,31 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="card-header">
-            <h3>Login form</h3>
+
+        <div class="card-header mt-5 mb-5">
+            <h1 class="text-center">Formulaire de connexion</h1>
         </div>
+
         <form method="POST">
             {% csrf_token %}
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+                <label class="mb-2" for="username">Username</label>
+                <input type="text" class="form-control mb-5" id="username" name="username" placeholder="Enter username">
 
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                <label class="mb-2" for="password">Password</label>
+                <input type="password" class="form-control mb-5" id="password" name="password" placeholder="Enter password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="{% url 'password_reset_form' %}" class="btn btn-warning">rest mdp</a>
+
+            <div class="box-btn">
+                <div class="btn-left">
+                    <button type="submit" class="btn btn-success">Connexion</button>
+                </div>
+                <div class="btn-right">
+                    <a href="{% url 'password_reset_form' %}" class="btn btn-warning">Mot de passe oublié ?</a>
+                </div>
+            </div>
         </form>
+        <p class="text-center">Vous n'avez pas de compte ? <a href="{% url 'signup' %}">Inscrivez-vous</a></p>
 
     </div>
 </div>

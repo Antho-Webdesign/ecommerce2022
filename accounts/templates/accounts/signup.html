@@ -3,24 +3,37 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="card-header">
-            <h3>Signup form</h3>
+
+        <div class="card-header mt-5 mb-5">
+            <h1 class="text-center">Formulaire d'inscription</h1>
         </div>
+
         <form method="POST">
             {% csrf_token %}
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+                <label class="mb-2" for="username">Pseudo</label>
+                <input type="text" class="form-control mb-5" id="username" name="username" placeholder="Enter username">
 
-                <label for="password">Password</label>
-                <input type="text" class="form-control" id="password" name="password" placeholder="Enter password">
+                <label class="mb-2" for="email">Email</label>
+                <input type="email" class="form-control mb-5" id="email" name="email" placeholder="Enter email">
 
-                <label for="password2">Password confirm</label>
-                <input type="text" class="form-control" id="password2" name="password2" placeholder="Confirm password">
+                <label class="mb-2" for="password">Mot de passe</label>
+                <input type="password" class="form-control mb-5" id="password" name="password" placeholder="Enter password">
+
+                <label class="mb-2" for="password2">Confirme mot de passe</label>
+                <input type="password" class="form-control mb-5" id="password2" name="password2" placeholder="Enter password">
+
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="box-btn">
+                <p class="text-center">Vous avez deja un compte ? 
+                    <a href="{% url 'login' %}">Connectez-vous</a>
+                </p>
+            </div>
         </form>
+
     </div>
 </div>
 

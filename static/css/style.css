@@ -169,8 +169,6 @@ form.card {
   margin: 30px auto;
 }
 
-
-
 /* 
   * ============ page contact_form ============ * 
 */
@@ -201,12 +199,14 @@ label {
 
 .btn-left {
   display: flex;
-  width: 100%;
+  width: 50%;
+  justify-content: center;
 }
 
 .btn-right {
   display: flex;
   width: 50%;
+  justify-content: center;
 }
 
 .box-btn {

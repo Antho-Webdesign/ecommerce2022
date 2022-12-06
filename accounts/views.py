@@ -1,8 +1,9 @@
+from genericpath import exists
+import random
 from django.contrib.auth import get_user_model, logout, login, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
 from .models import Profile
-
 from shop.models import Category, Product
 
 User = get_user_model()
@@ -75,22 +76,24 @@ def edit_profile(request):
 
 
 def password_reset_form(request):
+    token = random.randint(1, 999999)
+    # protocol = 'https://'
+    host = '127.0.0.1:8000/'
     if request.method == "POST":
         email = request.POST.get("email")
-        user = User.objects.get(email=email)
-        if user.email:
+        if email := User.objects.get(email=email):
             send_mail(
-                "Password reset",
-                "You can reset your password here:" + request.build_absolute_uri("/accounts/password_reset/confirm/") + 
-                ''' "/" + str(uidb64) + "/" + str(token),'''
-                " ",
+                'Password Reset',
+                host + 'accounts/password_reset_confirm/' + str(token) + '/',
+                ' ',
                 [email],
                 fail_silently=False,
             )
-            print(password_reset_confirm)
+            print(email)
             return redirect('password_reset_form_done')
 
     return render(request, 'accounts/registration/password_reset_form.html')
+    
 
 
 

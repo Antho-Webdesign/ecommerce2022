@@ -1,0 +1,12 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password Reset
+From:  
+To: customer
+Date: Tue, 06 Dec 2022 18:15:06 -0000
+Message-ID: 
+ <167035050623.23050.9671872480670773231@1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa>
+
+http://127.0.0.1:8000/accounts/password_reset_confirm/918847/
+-------------------------------------------------------------------------------

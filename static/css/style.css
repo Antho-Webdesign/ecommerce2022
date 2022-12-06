@@ -7,6 +7,7 @@
 .card-box {
   display: flex !important;
 }
+
 /* 
   * ============ page base ============ * 
 */
@@ -24,6 +25,8 @@
     background: black;
     width: 100%;
     margin: 0;
+    font-size: 1.2em;
+    padding: 10px;
   }
 
   .footer-box {
@@ -35,6 +38,11 @@
   .text-dropdown {
     font-size: 1.3em;
     margin: auto;
+  }
+
+  .nav-icn {
+    display: flex;
+    margin: auto 0 auto 50px;
   }
 
 }
@@ -272,19 +280,17 @@ label {
   color: #fff;
 }
 
-
 /* 
   * ============ PRODUITS ============ * 
 */
 
 /* bootstrap | DETAILS PRODUITS */
-
-.display-3 {
-  margin: 75px 0 !important;
+.prix {
+  margin: 80px 0;
 }
 
 /* style | DETAILS PRODUITS */
 
 .product_details_box {
-  margin: 75px 0 !important;
+  margin: 105px 0 !important;
 }

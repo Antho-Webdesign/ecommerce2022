@@ -1,4 +1,3 @@
-
 {% load static %}
 
 {% block navbar %}
@@ -8,7 +7,8 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
             <a class="nav-link titre-principale" href="{% url 'home' %}">kipik-shop</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown" style="justify-content: flex-end">
@@ -18,79 +18,95 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Produits
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             {% for pro in products %}
-                                <a class="dropdown-item text-dark text-dropdown" href="{% url 'detail' pro.slug %}">{{ pro.name }}</a>
+                            <a class="dropdown-item text-dark text-dropdown"
+                                href="{% url 'detail' pro.slug %}">{{ pro.name }}</a>
                             {% endfor %}
                         </div>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Categories
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             {% for cat in categories %}
-                                <a name="category" class="dropdown-item text-dark text-dropdown" href="{% url 'category' cat.slug %}">{{ cat.name }}</a>
+                            <a name="category" class="dropdown-item text-dark text-dropdown"
+                                href="{% url 'category' cat.slug %}">{{ cat.name }}</a>
                             {% endfor %}
                         </div>
                     </li>
 
-                    {% if user.is_authenticated %}
+                    <li class="mr-3">
+                        <a class="nav-link" href="{% url 'contact_form' %}">Contact</a>
+                    </li>
+
+                    <div class="nav-icn">
+                        {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user"></i>
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="nav-link text-dark text-center text-dropdown" href="{% url 'profile' %}">profile</a>
+                                <a class="nav-link text-dark text-center text-dropdown"
+                                    href="{% url 'profile' %}">profile</a>
                                 <a class="nav-link text-dark text-center text-dropdown" href="{% url 'cart' %}">Cart</a>
-                                <a class="nav-link text-dark text-center text-dropdown" href="{% url 'logout' %}">Logout</a>
+                                <a class="nav-link text-dark text-center text-dropdown"
+                                    href="{% url 'logout' %}">Logout</a>
                             </div>
                         </li>
-
 
                         {% if user.cart %}
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="{% url 'cart' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-cart-plus"></i>
-                                    ({{ user.cart.orders.count }})
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    {% for order in user.cart.orders.all %}
-                                        <div class="cart-box p-3" style="display: flex;">
-                                            <a class="dropdown-item text-dark text-dropdown" href="{% url 'detail' order.product.slug %}">
-                                                {{ order.product.name }}
-                                                <em>
-                                                    <a class="btn btn-danger text-end m-auto" href="{% url 'delete-product-cart' order.product.slug %}">
-                                                        X
-                                                    </a>
-                                                </em>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{% url 'cart' %}" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-cart-plus"></i>
+                                ({{ user.cart.orders.count }})
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {% for order in user.cart.orders.all %}
+                                <div class="cart-box p-3" style="display: flex;">
+                                    <a class="dropdown-item text-dark text-dropdown"
+                                        href="{% url 'detail' order.product.slug %}">
+                                        {{ order.product.name }}
+                                        <em>
+                                            <a class="btn btn-danger text-end m-auto"
+                                                href="{% url 'delete-product-cart' order.product.slug %}">
+                                                X
                                             </a>
-                                        </div>
-                                    {% endfor %}
+                                        </em>
+                                    </a>
                                 </div>
-                            </li>
+                                {% endfor %}
+                            </div>
+                        </li>
                         {% endif %}
 
-                    {% else %}
-                    <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% else %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user"></i>
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="nav-link text-dark text-center text-dropdown" href="{% url 'login' %}">Connexion</a>
-                                <a class="nav-link text-dark text-center text-dropdown" href="{% url 'signup' %}">Inscription</a>
+                                <a class="nav-link text-dark text-center text-dropdown"
+                                    href="{% url 'login' %}">Connexion</a>
+                                <a class="nav-link text-dark text-center text-dropdown"
+                                    href="{% url 'signup' %}">Inscription</a>
                             </div>
                         </li>
-                    {% endif %}
-                    <li>
-                        <a href="{% url 'contact_form' %}">Contact</a>
+                        {% endif %}
+                    </div>
                 </ul>
             </div>
         </nav>

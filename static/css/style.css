@@ -193,7 +193,9 @@ label {
 
 .box-btn {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  margin: 75px auto;
+  flex-direction: row;
   width: 100%;
 }
 
@@ -207,16 +209,6 @@ label {
   display: flex;
   width: 50%;
   justify-content: center;
-}
-
-.box-btn {
-  justify-content: space-around;
-  margin: 75px auto;
-  flex-direction: row;
-}
-
-.btn-del-all {
-  width: 100%;
 }
 
 .table {
@@ -324,4 +316,25 @@ label {
 
 .product_details_box {
   margin: 105px 0 !important;
+}
+
+/* 
+  * ============ BTN:cart, index, etc ============ * 
+*/
+.btn-cart {
+  width: 90% !important;
+}
+
+.btn-left {
+  width: 45%;
+}
+
+.btn-right {
+  width: 45%;
+}
+
+/* Élément | http://127.0.0.1:8000/cart/ */
+
+.btn-cart>a {
+  width: 100%;
 }

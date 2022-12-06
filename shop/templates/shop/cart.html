@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for order in orders %}
+                    {% for order in user.cart.orders.all %}
                     <tr>
                         <td class="text-light">{{ order.product.name }}</td>
                         <td class="text-light">{{ order.quantity }}</td>
@@ -51,11 +51,11 @@
             <div class="box-btn">
 
                 <div class="btn-left">
-                    <a href="{% url 'checkout' %}" class="btn btn-success">Payer</a>
+                    <a class="btn btn-success btn-cart" style="width:90%;" href="{% url 'checkout' %}" >Payer</a>
                 </div>
 
                 <div class="btn-right">
-                    <a class="btn btn-danger btn-del-all" href="{% url 'delete-cart' %}">Supprimer tout le panier</a>
+                    <a class="btn btn-danger btn-cart" style="width:90%;" href="{% url 'delete-cart' %}">Supprimer tout le panier</a>
                 </div>
 
             </div>

@@ -3,6 +3,12 @@
 {% block content %}
   
 <div class="row product_details_box" style="align-items: center;">
+
+    <h1 class="text-center mt-5 mb-5">
+        Bienvenue dans l'univers de 
+        <br/>
+        <span class="text-success fw-bold" style=" font-size: 1.5em">{{ product.marque_produit }}</span>
+    </h1>
         <div class="col-md-6" style="display: flex; justify-content: center;">
             <div>
                 <img src="{{ product.image.url }}" width="500px" height="500px" alt="">

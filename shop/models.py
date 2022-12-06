@@ -43,6 +43,7 @@ class Product(models.Model):
     description = models.TextField(max_length=2500)
     image = models.ImageField(upload_to='products/', default='products/default.jpg', blank=True, null=True)
     stock = models.IntegerField(default=0)
+    marque_produit = models.CharField(max_length=120, default='')
 
     # Affiche le nom du produit
     def __str__(self):

@@ -64,17 +64,17 @@
                                     href="{% url 'logout' %}">Logout</a>
                             </div>
                         </li>
-
                         {% if user.cart %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{% url 'cart' %}" id="navbarDropdownMenuLink"
+                        <!-- Default dropleft button -->
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-cart-plus"></i>
+                                <i class="fa fa-2x fa-cart-plus"></i>
                                 ({{ user.cart.orders.count }})
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 {% for order in user.cart.orders.all %}
-                                <div class="cart-box p-3" style="display: flex;">
+                                <div class="cart-box dropleft p-1" style="display: flex;">
                                     <a class="dropdown-item text-dark text-dropdown"
                                         href="{% url 'detail' order.product.slug %}">
                                         {{ order.product.name }}
@@ -88,7 +88,7 @@
                                 </div>
                                 {% endfor %}
                             </div>
-                        </li>
+                        </div>
                         {% endif %}
 
                         {% else %}

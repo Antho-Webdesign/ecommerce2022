@@ -76,20 +76,14 @@ def edit_profile(request):
 
 
 def password_reset_form(request):
-    token = random.randint(1, 999999)
-    # protocol = 'https://'
-    host = '127.0.0.1:8000/'
     if request.method == "POST":
         email = request.POST.get("email")
         if email := User.objects.get(email=email):
-            send_mail(
-                'Password Reset',
-                host + 'accounts/password_reset_confirm/' + str(token) + '/',
-                ' ',
-                [email],
-                fail_silently=False,
-            )
-            print(email)
+            # protocol = 'https'
+            host = '127.0.0.1:8000/'
+            link = 'accounts/password_reset/confirm/'
+            send_mail('Password Reset', f'{host}{link}', ' ', [email], fail_silently=False)
+            print(send_mail)
             return redirect('password_reset_form_done')
 
     return render(request, 'accounts/registration/password_reset_form.html')

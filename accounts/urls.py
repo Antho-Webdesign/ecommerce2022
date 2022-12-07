@@ -14,7 +14,7 @@ urlpatterns = [
     # Reset password done
     path('password_reset/done/', password_reset_form_done, name='password_reset_form_done'),
     # Reset password confirm
-    path('password_reset/confirm/<str:token>', password_reset_confirm, name='password_reset_confirm'),
+    path('password_reset/confirm/', password_reset_confirm, name='password_reset_confirm'),
     # Reset password complete
     path('password_reset/complete/', password_reset_complete, name='password_reset_complete'),
 ]

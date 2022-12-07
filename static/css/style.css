@@ -18,7 +18,7 @@
   }
 
   .navbar-expand-lg .navbar-nav {
-    font-size: 1.32em;
+    font-size: 1.2em;
   }
 
   .header-box {
@@ -194,6 +194,10 @@ label {
 .table-total-price {
   display: flex;
   justify-content: end;
+}
+
+.table-total-price {
+  font-size: 1.8em !important;
 }
 
 /* 

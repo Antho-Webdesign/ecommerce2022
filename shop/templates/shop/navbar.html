@@ -50,12 +50,16 @@
 
                     <div class="nav-icn">
                         {% if user.is_authenticated %}
-                        <li class="nav-item dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-1x fa-user"></i>
+                            </button>
+
+                      <!--  <li class="nav-item dropdown"> 
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user"></i>
-                            </a>
-
+                            </a> -->
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="nav-link text-dark text-center text-dropdown"
                                     href="{% url 'profile' %}">profile</a>
@@ -69,7 +73,7 @@
                         <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-2x fa-cart-plus"></i>
+                                <i class="fa fa-1x fa-cart-plus"></i>
                                 ({{ user.cart.orders.count }})
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">

@@ -35,8 +35,7 @@ def total_cart(request):
 # calcule le total tva
 def total_price_tva(request):
     total = sum(order.product.price * order.quantity for order in request.user.cart.orders.all())
-    total_tva = total * 0.2
-    return total_tva
+    return total * 0.2
 
 
 # index

@@ -242,13 +242,11 @@ label {
   flex-direction: column;
 }
 
-
 @media (min-width: 991px) and (max-width:1200px) {
   .skill-block {
     padding: 32px !important;
   }
 }
-
 
 @media screen and (min-width: 650px) and (max-width: 1360px) {
   .content-box-product {

@@ -128,6 +128,9 @@ class BillingAddressModelMixin(models.Model):
     city = models.CharField("City", max_length=1024)
 
     class Meta:
+        verbose_name = "Billing address"
+        verbose_name_plural = "Billing addresses"
+        ordering = ('date_added')
         abstract = True
 
 

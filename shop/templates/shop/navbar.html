@@ -74,12 +74,12 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 {% for order in user.cart.orders.all %}
-                                <div class="cart-box dropleft p-1" style="display: flex;">
+                                <div class="cart-box d-flex dropleft p-1">
                                     <a class="dropdown-item text-dark text-dropdown"
                                         href="{% url 'detail' order.product.slug %}">
                                         {{ order.product.name }}
                                         <em>
-                                            <a class="btn btn-danger text-end m-auto"
+                                            <a class="btn btn-danger m-auto"
                                                 href="{% url 'delete-product-cart' order.product.slug %}">
                                                 X
                                             </a>

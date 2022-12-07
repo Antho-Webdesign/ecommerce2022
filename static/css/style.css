@@ -249,6 +249,13 @@ label {
   }
 }
 
+
+@media screen and (min-width: 650px) and (max-width: 1360px) {
+  .content-box-product {
+    width: auto;
+  }
+}
+
 @media (min-width: 1200px) {
   .container-cart {
     width: 66%;

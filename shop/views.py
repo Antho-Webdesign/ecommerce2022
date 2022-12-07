@@ -44,22 +44,20 @@ def index(request):
     products = Product.objects.all()
     categories = Category.objects.all()
 
-    products_list = Product.objects.all()
-
-    paginator = Paginator(products_list, 4)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-
     if name := request.GET.get('search'):
         if request.method == 'GET':
-            products = products.filter(name__icontains=name)  # icontains: i=ignore majuscule/minuscule,
+            products = Product.objects.filter(name__icontains=name)
+
+    paginator = Paginator(products, 4)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'products': products,
         'categories': categories,
         'page_obj': page_obj,
-        'products_list': products_list,
     }
+
     return render(request, 'shop/index.html', context)
 
 

@@ -1,8 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import HttpResponseRedirect, get_object_or_404, render, redirect
 from django.urls import reverse
-from .forms import ContactForm, forms
-
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from .models import ContactFormModelMixin, Product, Cart, Order, Category
 
 
@@ -44,31 +43,42 @@ def total_price_tva(request):
 def index(request):
     products = Product.objects.all()
     categories = Category.objects.all()
-    products_page = Paginator(products, 3)
+
+    products_list = Product.objects.all()
+
+    paginator = Paginator(products_list, 4)
     page_number = request.GET.get('page')
-    page_obj = products_page.get_page(page_number)
+    page_obj = paginator.get_page(page_number)
+
     if name := request.GET.get('search'):
         if request.method == 'GET':
             products = products.filter(name__icontains=name)  # icontains: i=ignore majuscule/minuscule,
+
     context = {
         'products': products,
         'categories': categories,
         'page_obj': page_obj,
+        'products_list': products_list,
     }
     return render(request, 'shop/index.html', context)
 
 
 def filter_by_category(request, slug):
-    categories = Category.objects.all()
-    products = Product.objects.all()
-    if request.method == 'GET':
-        category = Category.objects.get(slug=slug)
-        products = Product.objects.filter(category=category)
     # categories = Category.objects.all()
+    category = get_object_or_404(Category, slug=slug)
+    products = Product.objects.filter(category=category)
+
+    products_list = Product.objects.all()
+
+    paginator = Paginator(products_list, 4)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
     context = {
         'products': products,
+        'page_obj': page_obj,
         'category': category,
-        'categories': categories,
+        'products_list': products_list,
     }
     return render(request, 'shop/index.html', context)
 

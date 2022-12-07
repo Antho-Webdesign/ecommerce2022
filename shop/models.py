@@ -1,8 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
-
-from accounts.models import Customer
+from django.views.generic import ListView
 from ecommerce.settings import AUTH_USER_MODEL
 
 user = get_user_model()
@@ -60,8 +59,12 @@ class Product(models.Model):
     def ttc_price(self):
         return self.price * 1.2
 
-
-
+''' 
+class ProductListView(ListView):
+    paginate_by = 4
+    model = Product
+    context_object_name = 'products'
+'''
 
 # Article (Order)
 """

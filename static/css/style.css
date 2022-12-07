@@ -253,9 +253,31 @@ label {
 }
 
 @media (min-width: 1200px) {
+  .container-cart {
+    width: 66%;
+    justify-content: center;
+    margin: auto;
+    display: flex;
+  }
+
   .skill-block {
     padding: 56px !important;
   }
+}
+
+@media (max-width: 600px) {
+  .container-cart {
+    width: 95%;
+    justify-content: center;
+    margin: auto;
+    display: flex;
+  }
+
+  .table {
+    font-size: 1em;
+    width: 100%;
+  }
+
 }
 
 /* ---------- NAVIGATION ---------- */

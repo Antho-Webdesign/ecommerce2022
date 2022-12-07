@@ -1,7 +1,6 @@
 from django.urls import path
 
-from accounts.views import signup, login_user, logout_user, password_reset_form, \
-                            password_reset_form_done, password_reset_confirm, password_reset_complete
+from .views import signup, login_user, logout_user, password_reset_form, password_reset_form_done, password_reset_confirm, password_reset_complete
 
 urlpatterns = [
     # Inscription

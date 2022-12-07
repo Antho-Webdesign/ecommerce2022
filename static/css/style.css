@@ -364,6 +364,20 @@ label {
   margin: auto !important;
 }
 
+.btn-left-index {
+  width: 90%;
+  display: flex !important;
+  justify-content: center !important;
+  margin: auto !important;
+}
+
+.btn-right-index {
+  width: 90%;
+  display: flex !important;
+  justify-content: center !important;
+  margin: auto !important;
+}
+
 .btn-cart>a {
   width: 100%;
 }
@@ -506,4 +520,11 @@ a.btn {
     padding: 0;
   }
 
+}
+
+.product_details_box {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  justify-content: center;
 }

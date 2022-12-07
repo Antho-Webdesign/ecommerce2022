@@ -48,7 +48,7 @@ def index(request):
         if request.method == 'GET':
             products = Product.objects.filter(name__icontains=name)
 
-    paginator = Paginator(products, 4)
+    paginator = Paginator(products, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

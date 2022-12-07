@@ -33,9 +33,13 @@
             <div class="product-description">
                 {{ product.description }}
             </div>
+            {% if user.is_authenticated %}
             <a class="detail-btn-add" href="{% url 'add_to_cart' product.slug %}">
                 <button class="btn btn-success add-cart">Ajouter au panier</button>
             </a>
+            {% else %}
+            <p class="text-warning bg-gradient fs-5" style="width:45%">Connectez-vous pour ajouter au panier</p>
+            {% endif %}
         </div>
     </div>
 </div>

@@ -1,30 +1,534 @@
+/* bootstrap = pointeur css d'originne */
+/* style = pointeur css créé */
+
+/* 
+  * ============ page navbar ============ * 
+*/
+.card-box {
+  display: flex !important;
+}
+
+/* 
+  * ============ page base ============ * 
+*/
+
+@media (min-width: 992px) {
+  .titre-principale {
+    font-size: 2em;
+  }
+
+  .navbar-expand-lg .navbar-nav {
+    font-size: 1.2em;
+  }
+
+  .header-box {
+    background: black;
+    width: 100%;
+    margin: 0;
+    font-size: 1.2em;
+    padding: 15px;
+  }
+
+  .footer-box {
+    background: black;
+    width: 100%;
+    margin: 0;
+  }
+
+  .text-dropdown {
+    font-size: 1.3em;
+    margin: auto;
+  }
+
+  .nav-icn {
+    display: flex;
+    margin: auto 50px;
+  }
+
+  #navbarNavDropdown {
+    justify-content: flex-end;
+    margin: auto 50px auto 0;
+  }
+}
+
+.navbar {
+  background: black !important;
+  width: 90%;
+  justify-content: center;
+  margin: auto;
+}
+
+a {
+  color: #fff !important;
+}
+
+#dropdownMenu {
+  color: white;
+}
+
+
+
+/* 
+  * ============ page index ============ * 
+*/
+.card-body {
+  width: 50%;
+  display: flex;
+  margin: auto;
+}
+
+form.card {
+  background: border-box;
+  padding: 30px;
+  margin: 50px auto;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0;
+}
+
+.card-body {
+  flex-direction: column;
+}
+
+.no-gutters {
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+}
+
+.box-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-box-product {
+  display: flex;
+  width: 25%;
+}
+
+.pagination-box {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 30px auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+}
+
+form.card {
+  border: none;
+  display: flex;
+  justify-content: center;
+  width: 45%;
+}
+
+.radius-10 {
+  border-radius: 10px;
+}
+
+/* 
+  * ============ page profile ============ * 
+*/
+.container-profile {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  justify-content: center;
+  margin: auto;
+}
+
+.img-profile {
+  width: 33%;
+  border-radius: 50px;
+}
+
+.updt-profile {
+  justify-content: center;
+  display: flex;
+  margin: 30px auto;
+}
+
+/* 
+  * ============ page contact_form ============ * 
+*/
+label {
+  font-size: 1.5em;
+}
+
+/* 
+  * ============ page cart ============ * 
+*/
+
+.product_detail>img:nth-child(2) {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.product_detail>p:nth-child(3) {
+  text-align: center;
+}
+
+.table {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.total-price,
+.total-tva {
+  font-size: 0.5em;
+  text-align: end;
+  font-style: italic;
+}
+
+.table-total-price {
+  display: flex;
+  justify-content: end;
+}
+
+.table-total-price {
+  font-size: 1.8em !important;
+}
+
+/* 
+  * ============ page cart ============ * 
+*/
+
+.bg-black {
+  background: #000;
+}
+
+.skill-block {
+  width: 30%;
+}
+
+.bg-primary {
+  background-color: grey !important;
+}
+
+.bg-success {
+  background-color: black !important;
+}
+
+.bg-warning {
+  background-color: purple !important;
+}
+
+.bg-danger {
+  background-color: #b01414 !important;
+}
+
+.card-cart-checkout {
+  height: 75%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.card-checkout-infos {
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+}
+
+.card-checkout-body {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 991px) and (max-width:1200px) {
+  .skill-block {
+    padding: 32px !important;
+  }
+}
+
+@media screen and (min-width: 650px) and (max-width: 1360px) {
+  .content-box-product {
+    width: auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-cart {
+    width: 66%;
+    justify-content: center;
+    margin: auto;
+    display: flex;
+  }
+
+  .skill-block {
+    padding: 56px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .container-cart {
+    width: 95%;
+    justify-content: center;
+    margin: auto;
+    display: flex;
+  }
+
+  .table {
+    font-size: 1em;
+    width: 100%;
+  }
+
+}
+
+/* ---------- NAVIGATION ---------- */
+
+/* bootstrap | min.css */
 .navbar {
   background: black !important;
   color: #fff !important;
 }
 
-/* bootstrap.min.css | https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css */
-
 .navbar-light .navbar-brand {
-  /* color: rgba(0,0,0,.9); */
   color: #fff;
 }
-
-/* Élément | http://127.0.0.1:8000/ */
 
 #navbarNavDropdown {
   color: #fff;
 }
 
+/* 
+  * ============ PRODUITS ============ * 
+*/
+
+/* bootstrap | DETAILS PRODUITS */
+.prix {
+  margin: 80px 0;
+}
+
+.titre-detail {
+  margin-bottom: 5rem !important;
+  margin-top: 50px;
+}
+
+.details_box {
+  display: flex;
+  margin: 50px auto;
+  align-items: center;
+}
+
+.product-description {
+  width: 80% !important;
+  margin-bottom: 50px;
+}
 
 
-/**
-  * ===== Élément | details produit ===== 
-**/
-.display-3 {
-  margin: 75px 0 !important;
+/* Élément | http://127.0.0.1:8000/product/air-pods-pro/ */
+
+.detail-btn-add {
+  margin: 80px 0;
+}
+
+.img-detail {
+  width: 66%;
+  height: 100%;
+}
+
+/* 
+  * ============ BTN:cart, index, etc ============ * 
+*/
+.box-btn {
+  display: flex;
+  justify-content: space-around;
+  margin: 75px auto;
+  flex-direction: row;
+  width: 100%;
+}
+
+.btn-cart {
+  width: 90% !important;
+}
+
+.btn-left {
+  width: 45%;
+  display: flex !important;
+  justify-content: center !important;
+  margin: auto !important;
+}
+
+.btn-right {
+  width: 45%;
+  display: flex !important;
+  justify-content: center !important;
+  margin: auto !important;
+}
+
+.btn-left-index {
+  width: 90%;
+  display: flex !important;
+  justify-content: center !important;
+  margin: auto !important;
+}
+
+.btn-right-index {
+  width: 90%;
+  display: flex !important;
+  justify-content: center !important;
+  margin: auto !important;
+}
+
+.btn-cart>a {
+  width: 100%;
+}
+
+button.btn {
+  width: 100%;
+}
+
+a.btn {
+  width: 100%;
+}
+
+.add-cart {
+  width: 66% !important;
+}
+
+/* 
+  * ============ Responsive mobile tablette ============ * 
+*/
+@media screen and (max-width: 950px) {
+  .box-product {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .product-title {
+    font-size: 1.7em;
+  }
+
+  .card-body {
+    width: 100%;
+  }
+
+  .content-box-product {
+    margin: auto 30px;
+    padding: 0;
+  }
+
+  .box-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .content-box-product {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 90%;
+    justify-content: center;
+  }
+
+  .details_box {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .product-description {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .container-img {
+    margin: auto;
+  }
+
+  .box-img {
+    display: flex;
+    justify-content: center;
+  }
+
+  .product-description {
+    display: flex;
+    width: 100% !important;
+    margin: auto;
+    text-align: center;
+  }
+
+  .searchbar {
+    width: 100%;
+    display: flex;
+    margin: 0;
+  }
+
+  form.card {
+    justify-content: space-around;
+    width: 100%;
+    padding: 0;
+  }
+
+}
+
+@media screen and (min-width: 651px) and (max-width: 850px) {
+  .container-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 90%;
+  }
+
+  .container-text {
+    display: flex;
+    flex-direction: column !important;
+    width: 100%;
+    justify-content: center !important;
+    margin: auto;
+    text-align: center;
+  }
+
+  .details_box {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .product-description {
+    display: flex;
+    width: 100% !important;
+    text-align: center;
+  }
+
+  .box-img {
+    justify-content: center;
+    display: flex;
+  }
+
+  .searchbar {
+    width: 100%;
+    display: flex;
+    margin: 0;
+  }
+
+  form.card {
+    justify-content: space-around;
+    width: 80%;
+    padding: 0;
+  }
+
 }
 
 .product_details_box {
-  margin: 75px 0 !important;
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  justify-content: center;
 }

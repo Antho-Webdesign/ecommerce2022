@@ -87,9 +87,6 @@ def password_reset_form(request):
             return redirect('password_reset_form_done')
 
     return render(request, 'accounts/registration/password_reset_form.html')
-    
-
-
 
 def password_reset_form_done(request):
     return render(request, 'accounts/registration/password_reset_done.html')

@@ -146,8 +146,8 @@ class ContactFormModelMixin(models.Model):
     def __str__(self):
         return self.full_name
     class Meta:
-        verbose_name = "Contact form"
-        verbose_name_plural = "Contact forms"
+        verbose_name = "Contact"
+        verbose_name_plural = "Contacts"
         ordering = ('full_name', 'date_sent', 'email', 'subject', 'message', 'cc_myself')
 
     '''

@@ -22,17 +22,18 @@ def signup(request):
     if request.method == "POST":
         # traiter le formulaire
         username = request.POST.get("username")
+        email = request.POST.get("email")
         password = request.POST.get("password")
-
-        user = User.objects.create_user(username=username, password=password)
-        profile = Profile.objects.create(user=user)
-        user.save()
-        profile.save()
-        login(request, user)
-        return redirect('home')
-
+        password2 = request.POST.get("password2")
+        if password == password2:
+            user = User.objects.create_user(username, email, password)
+            profile = Profile.objects.create(user=user)
+            user.save()
+            profile.save()
+            return redirect('login')
+        else:
+            return redirect('signup')
     return render(request, 'accounts/signup.html', context)
-
 
 def login_user(request):
     products = Product.objects.all()
@@ -72,8 +73,36 @@ def profile(request):
 
 def edit_profile(request):
     user = request.user
-    profile = Profile.objects.get(user=user)
-    return render(request, 'accounts/profile_update.html', {'profile': profile})
+    profile = get_object_or_404(Profile, user=user)
+    products = Product.objects.all()
+    categories = Category.objects.all()
+    context = {
+        'products': products,
+        'categories': categories,
+        'profile': profile,
+    }
+    if request.method == "POST":
+        # traiter le formulaire
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+        address = request.POST.get("address")
+        city = request.POST.get("city")
+        zip_code = request.POST.get("zip_code")
+        state = request.POST.get("state")
+        country = request.POST.get("country")
+        user.username = username
+        user.email = email
+        profile.phone = phone
+        profile.address = address
+        profile.city = city
+        profile.zip_code = zip_code
+        profile.state = state
+        profile.country = country
+        user.save()
+        profile.save()
+        return redirect('profile')
+    return render(request, 'accounts/profile_update.html', context)
 
 
 def password_reset_form(request):

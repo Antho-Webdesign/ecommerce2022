@@ -13,7 +13,7 @@ User = get_user_model()
 def signup(request):
     products = Product.objects.all()
     categories = Category.objects.all()
-    context = { 
+    context = {
         'products': products,
         'categories': categories,
     }
@@ -25,9 +25,10 @@ def signup(request):
         password = request.POST.get("password")
 
         user = User.objects.create_user(username=username, password=password)
-
+        profile = Profile.objects.create(user=user)
+        user.save()
+        profile.save()
         login(request, user)
-
         return redirect('home')
 
     return render(request, 'accounts/signup.html', context)

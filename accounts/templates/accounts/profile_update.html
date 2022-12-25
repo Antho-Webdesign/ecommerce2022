@@ -2,5 +2,48 @@
 {% load static %}
 
 {% block content %}
+    <div class="card-header mt-5 mb-5">
+        <h1 class="text-center">Modifier mon profile</h1>
+    </div>
+    <!-- Edit Profile Form -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="first_name">Prénom</label>
+                        <input type="text" class="form-control mb-2" id="first_name" name="first_name" value="{{ user.first_name }}">
+
+                        <label for="last_name">Nom</label>
+                        <input type="text" class="form-control mb-2" id="last_name" name="last_name" value="{{ user.last_name }}">
+
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control mb-2" id="email" name="email" value="{{ user.email }}">
+
+                        <label for="phone">Téléphone</label>
+                        <input type="text" class="form-control mb-2" id="phone" name="phone" value="{{ user.phone }}">
+
+                        <label for="address">Adresse</label>
+                        <input type="text" class="form-control mb-2" id="address" name="address" value="{{ user.address }}">
+
+                        <label for="city">Ville</label>
+                        <input type="text" class="form-control mb-2" id="city" name="city" value="{{ user.city }}">
+
+                        <label for="zip_code">Code postal</label>
+                        <input type="text" class="form-control mb-2" id="zip_code" name="zip_code" value="{{ user.zip_code }}">
+
+                        <label for="country">Pays</label>
+                        <input type="text" class="form-control" id="country" name="country" value="{{ user.country }}">
+
+                        <label for="password">Mot de passe</label>
+                        <input type="password" class="form-control mb-2" id="password" name="password">
+
+                        <label for="password2">Confirmer le mot de passe</label>
+                        <input type="password" class="form-control mb-2" id="password2" name="password2">
+
+                        <button type="submit" class="btn btn-primary mt-3">Modifier</button>
+                    </div>
+
 
 {% endblock %}

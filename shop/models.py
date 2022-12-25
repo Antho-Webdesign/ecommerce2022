@@ -148,7 +148,7 @@ class ContactFormModelMixin(models.Model):
     class Meta:
         verbose_name = "Contact"
         verbose_name_plural = "Contacts"
-        ordering = ('full_name', 'date_sent', 'email', 'subject', 'message', 'cc_myself')
+        ordering = ('-date_sent', 'full_name', 'email', 'subject', 'message', 'cc_myself')
 
     '''
     def get_absolute_url(self):

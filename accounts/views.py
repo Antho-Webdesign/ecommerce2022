@@ -99,8 +99,15 @@ def edit_profile(request):
         profile.zip_code = zip_code
         profile.state = state
         profile.country = country
+        message = "Your profile has been updated successfully"
+        msg = {
+            'message': message,
+        }
+        context.update(msg)
+
         user.save()
         profile.save()
+
         return redirect('profile')
     return render(request, 'accounts/profile_update.html', context)
 

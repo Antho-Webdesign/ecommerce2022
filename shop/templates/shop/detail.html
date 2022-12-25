@@ -27,19 +27,22 @@
                 {{ product.name }}
             </div>
 
-            <div class="text-danger prix">
-                Prix : {{ price_ttc }}€ <small class="text-muted">TTC</small>
-            </div>
             <div class="product-description">
                 {{ product.description }}
             </div>
+
+            <div class="text-danger prix">
+                Prix : {{ price_ttc }}€ <small class="text-muted">TTC</small>
+            </div>
+
             {% if user.is_authenticated %}
-            <a class="detail-btn-add" href="{% url 'add_to_cart' product.slug %}">
-                <button class="btn btn-success add-cart">Ajouter au panier</button>
-            </a>
+                <a class="detail-btn-add" href="{% url 'add_to_cart' product.slug %}">
+                    <button class="btn btn-success add-cart">Ajouter au panier</button>
+                </a>
             {% else %}
-            <p class="text-warning bg-gradient fs-5" style="width:45%">Connectez-vous pour ajouter au panier</p>
+                <p class="text-warning bg-gradient fs-5" style="width:45%">Connectez-vous pour ajouter au panier</p>
             {% endif %}
+
         </div>
     </div>
 </div>

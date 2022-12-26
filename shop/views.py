@@ -116,6 +116,7 @@ def add_to_cart(request, slug):
 
 def cart(request):
     products = Product.objects.all()
+    categories = Category.objects.all()
     cart = get_object_or_404(Cart, user=request.user)
     # categories = Category.objects.all()
     total = sum(order.product.price * order.quantity for order in request.user.cart.orders.all())
@@ -124,7 +125,7 @@ def cart(request):
     items = Cart.objects.filter(user=request.user)
     context = {
         'products': products,
-        # 'categories': categories,
+        'categories': categories,
         'cart': cart,
         'items': items,
         'total': total,

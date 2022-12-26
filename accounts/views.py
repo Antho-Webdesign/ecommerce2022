@@ -20,7 +20,6 @@ def signup(request):
     # form = UserCreationForm(request.POST)
     # context = {'form': form}
     if request.method == "POST":
-        # traiter le formulaire
         username = request.POST.get("username")
         email = request.POST.get("email")
         password = request.POST.get("password")

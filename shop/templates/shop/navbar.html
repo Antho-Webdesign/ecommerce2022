@@ -92,13 +92,27 @@ a {
                                 <a class="dropdown-item text-dark text-dropdown" href="{% url 'logout' %}">Logout</a>
                             </li>
                         </ul>
+                        {% if user.cart %}
+                            <li class="nav-item dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                     <i class="fa fa-1x fa-cart-plus"></i>({{ user.cart.orders.count }})
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for order in user.cart.orders.all %}
+                                        <li>
+                                            <a class="dropdown-item text-dark text-dropdown" href="{% url 'detail' order.product.slug %}">{{ order.product.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
                     {% else %}
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="dropdown-item text-dark text-dropdown" href="{% url 'login' %}">Login</a>
                             </li>
                             <li>
-                                <a class="dropdown-item text-dark text-dropdown" href="{% url 'signup' %}">Inscription</a>
+                                <a class="dropdown-item text-dark text-dropdown" href="{% url 'register' %}">Register</a>
                             </li>
                         </ul>
                     {% endif %}

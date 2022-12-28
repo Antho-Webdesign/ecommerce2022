@@ -2,21 +2,52 @@
 
 {% block search %}
 <!-- Search Bar -->
-<div class="row">
-    <div class="col-md-12">
-        <form class="card card-sm" style="border: none; display: flex; justify-content: center">
-            <div class="row align-items-center">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="card card-sm bg-dark" style="border: none; display: flex; justify-content: center">
+                <div class="row align-items-center">
 
-                <div class="col">
-                    <input type="search" placeholder="Entrez le nom du produits" name="search" id="search"
-                        class="form-control form-control-borderless searchbar">
-                </div>
+                    <div class="col">
+                        <input type="search" placeholder="Entrez le nom du produits" name="search" id="search"
+                            class="form-control form-control-borderless searchbar">
+                    </div>
 
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-success">Recherche</button>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-success">Recherche</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
+<!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5 p-3">
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand">Categories:</span>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                {% for category in categories %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'category' category.slug %}">{{ category.name}}</a>
+                </li>
+
+                {% endfor %}
+            </ul>
+            <!-- Links -->
+        </div>
+        <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
 {% endblock %}

@@ -1,12 +1,4 @@
-.content-box-product {
-  display: flex;
-  width: 33%;
-}
-
-.box-btn {
-  display: flex;
-  justify-content: space-between;
-}
+/* Élément | http://127.0.0.1:8000/ */
 
 .navbar {
   background: black !important;
@@ -30,15 +22,15 @@
   flex-direction: column;
 }
 
-/*
-  * ============ page navbar ============ *
+/* 
+  * ============ page navbar ============ * 
 */
 .card-box {
   display: flex !important;
 }
 
-/*
-  * ============ page base ============ *
+/* 
+  * ============ page base ============ * 
 */
 
 @media (min-width: 992px) {
@@ -97,8 +89,8 @@ a {
 
 
 
-/*
-  * ============ page index ============ *
+/* 
+  * ============ page index ============ * 
 */
 .card-body {
   width: 50%;
@@ -164,8 +156,8 @@ form.card {
   border-radius: 10px;
 }
 
-/*
-  * ============ page profile ============ *
+/* 
+  * ============ page profile ============ * 
 */
 .container-profile {
   display: flex;
@@ -186,15 +178,15 @@ form.card {
   margin: 30px auto;
 }
 
-/*
-  * ============ page contact_form ============ *
+/* 
+  * ============ page contact_form ============ * 
 */
 label {
   font-size: 1.5em;
 }
 
-/*
-  * ============ page cart ============ *
+/* 
+  * ============ page cart ============ * 
 */
 
 .product_detail>img:nth-child(2) {
@@ -229,8 +221,8 @@ label {
   font-size: 1.8em !important;
 }
 
-/*
-  * ============ page cart ============ *
+/* 
+  * ============ page cart ============ * 
 */
 
 .bg-black {
@@ -331,8 +323,8 @@ label {
   color: #fff;
 }
 
-/*
-  * ============ PRODUITS ============ *
+/* 
+  * ============ PRODUITS ============ * 
 */
 
 /* bootstrap | DETAILS PRODUITS */
@@ -368,8 +360,8 @@ label {
   height: 100%;
 }
 
-/*
-  * ============ BTN:cart, index, etc ============ *
+/* 
+  * ============ BTN:cart, index, etc ============ * 
 */
 .box-btn {
   display: flex;
@@ -427,8 +419,8 @@ a.btn {
   width: 66% !important;
 }
 
-/*
-  * ============ Responsive mobile tablette ============ *
+/* 
+  * ============ Responsive mobile tablette ============ * 
 */
 @media screen and (max-width: 950px) {
   .box-product {

@@ -1,13 +1,35 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block content %}
+<style>
 
-<div class="row product_details_box bg-gradient" style="align-items: center;">
+.product_details_box {
+    align-items: center;
+}
+.details_box {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  margin: auto;
+}
 
-    <h1 class="text-center titre-detail mb-5">
+.container-text {
+  margin: auto;
+}
+
+.separateur {
+  justify-content: center;
+  margin: auto;
+}
+
+</style>
+
+<div class="product_details_box bg-gradient">
+
+    <h1 class="text-center titre-detail mt-5 mb-5">
         Bienvenue dans l'univers de : 
         <br>
-        <span class="text-info fw-bold fst-italic p-3">
+        <span class="text-info fw-bold fst-italic" style="font-size: 1.5em;">
         {{ product.marque_produit }}</span>
     </h1>
     <!-- separateur -->
@@ -40,7 +62,9 @@
                     <button class="btn btn-success add-cart">Ajouter au panier</button>
                 </a>
             {% else %}
-                <p class="text-warning bg-gradient fs-5" style="width:45%">Connectez-vous pour ajouter au panier</p>
+                <p class="bg-gradient fs-5 mt-5">
+                    <a class="text-warning" href="{% url 'login' %}">Connectez-vous pour ajouter au panier</a>
+                </p>
             {% endif %}
 
         </div>

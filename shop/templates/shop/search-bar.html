@@ -1,24 +1,43 @@
 {% load static %}
 
 {% block search %}
-<!-- Search Bar -->
-    <div class="row">
+<style>
+
+form.card {
+    width: 66%;
+}
+#search {
+ width: 66%;
+ justify-content: center;
+ margin: auto !important;
+ display: flex;
+}
+
+nav.navbar:nth-child(7) {
+  display: flex;
+  width: 90%;
+  background: black;
+  justify-content: center;
+  margin: auto;
+  padding: 5px !important;
+  font-size: 0.9em;
+}
+
+
+</style>
+    <!-- Search Bar -->
         <div class="col-md-12">
             <form class="card card-sm bg-dark" style="border: none; display: flex; justify-content: center">
-                <div class="row align-items-center">
+                <div class="align-items-center" style="display:flex;">
 
-                    <div class="col">
                         <input type="search" placeholder="Entrez le nom du produits" name="search" id="search"
-                            class="form-control form-control-borderless searchbar">
-                    </div>
-
-                    <div class="col-auto">
+                            class="form-control form-control-borderless searchbar m-0">
                         <button type="submit" class="btn btn-success">Recherche</button>
-                    </div>
+
                 </div>
             </form>
         </div>
-    </div>
+
 <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5 p-3">
 

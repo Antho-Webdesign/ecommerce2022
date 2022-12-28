@@ -2,6 +2,25 @@
 
 {% block navbar %}
 <style>
+
+
+li {
+  list-style: none;
+}
+
+
+nav.navbar:nth-child(1) {
+  background-color: black !important;
+  font-size: 1.5em;
+}
+
+.navbar {
+padding: 20px !important;
+}
+
+a {
+    color: white !important;
+}
 @media (min-width: 992px) {
   .nav-icn {
     align-items: center;
@@ -9,7 +28,87 @@
 }
 
 </style>
+    <nav class="navbar navbar-expand-lg bg-black text-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">KIPIK SHOP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu">
+                            {% for cat in categories %}
+                                <a class="dropdown-item text-dark text-dropdown"
+                                   href="{% url 'category' cat.slug %}">{{ cat.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Produits
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            {% for product in products %}
+                                <li>
+                                    <a class="dropdown-item text-dark text-dropdown" href="{% url 'detail' product.slug %}">{{ product.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact_form' %}">Contact</a>
+                    </li>
+                </ul>
+
+                <li class="nav-item dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-1x fa-user"></i>
+                        </a>
+                    {% if user.is_authenticated %}
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item text-dark text-dropdown" href="{% url 'profile' %}">Profile</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-dark text-dropdown" href="{% url 'cart' %}">Panier</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-dark text-dropdown" href="{% url 'logout' %}">Logout</a>
+                            </li>
+                        </ul>
+                    {% else %}
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item text-dark text-dropdown" href="{% url 'login' %}">Login</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-dark text-dropdown" href="{% url 'signup' %}">Inscription</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </li>
+            </div>
+        </div>
+    </nav>
+
+
+    {% comment %}
 <div class="row header-box" style="background: black;">
     <div class="col-md-12">
 
@@ -46,7 +145,7 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             {% for cat in categories %}
-                            <a class="dropdown-item text-dark text-dropdown"
+                            <a name="category" class="dropdown-item text-dark text-dropdown"
                                 href="{% url 'category' cat.slug %}">{{ cat.name }}</a>
                             {% endfor %}
                         </div>
@@ -63,20 +162,19 @@
                                 <i class="fa fa-1x fa-user"></i>
                             </button>
 
-
-                      <!--  <li class="nav-item dropdown"> 
+                      <!--  <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user"></i>
                             </a> -->
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="nav-link text-dark text-center text-dropdown"
-                                    href="{% url 'profile' %}">Profile</a>
+                                    href="{% url 'profile' %}">profile</a>
                                 <a class="nav-link text-dark text-center text-dropdown" href="{% url 'cart' %}">Cart</a>
                                 <a class="nav-link text-dark text-center text-dropdown"
                                     href="{% url 'logout' %}">Logout</a>
                             </div>
-
+                        </li>
                         {% if user.cart %}
                         <!-- Default dropleft button -->
                         <div class="dropdown">
@@ -102,7 +200,6 @@
                                 {% endfor %}
                             </div>
                         </div>
-
                         {% endif %}
 
                         {% else %}
@@ -126,5 +223,6 @@
         </nav>
     </div>
 </div>
+{% endcomment %}
 
 {% endblock %}

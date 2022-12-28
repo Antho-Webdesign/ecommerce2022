@@ -12,9 +12,11 @@ def base(request):
     return render(request, 'shop/base.html', context={"items": items, "item": item})
 
 def navbar(request):
+    user = request.user
     products = Product.objects.all()
     categories = Category.objects.all()
     context = {
+        'user': user,
         'products': products,
         'categories': categories,
     }
@@ -47,7 +49,7 @@ def index(request):
         if request.method == 'GET':
             products = Product.objects.filter(name__icontains=name)
 
-    paginator = Paginator(products, 3)
+    paginator = Paginator(products, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

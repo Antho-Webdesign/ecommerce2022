@@ -2,6 +2,42 @@
 
 {% block content %}
 <style>
+   .card-body {
+      flex-direction: column;
+      width: 50%;
+      display: flex;
+      margin: auto;
+    }
+
+    .card {
+      width: 66%;
+      background: border-box;
+      margin: 50px auto;
+    }
+
+    .box-btn {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .box-product {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .content-box-product {
+      display: flex;
+      width: 33%;
+      margin: auto;
+    }
+
+    img {
+        width: 66%;
+        margin: auto;
+    }
 
 </style>
 <!-- Search Bar -->
@@ -9,17 +45,17 @@
 {% block search %}
 {% endblock %}
 
-<div class="row box-product">
+<div class="box-product">
 
     {% for product in page_obj %}
     <div class="col-md-5 mb-5 content-box-product">
-        <div class="card" style="width: 80%; display: flex; justify-content: center; margin: auto; background: transparent; border: none">
+        <div class="card" style="width: 66%; display: flex; justify-content: center; margin: auto; background: transparent; border: none">
             <div id="aa{{ product.id }}" class="card-title">
                 <p class="radius-10 text-center fs-5 fst-italic text-info bg-gradient"> {{ product.marque_produit }}</p>
                 <h1 class="text-center product-title radius-10 text-light fw-semibold">{{ product.name }}</h1>
             </div>
 
-            <img src="{{ product.image.url }}" alt="" class="card-ing-top">
+            <img src="{{ product.image.url }}" alt="" class="card-ing-top" style="width: 66%;margin: auto;">
 
             <div class="card-body">
                 <div id="price price{{ product.id }}" class="card-text mb-5 fw-bold fs-3 text-center text-danger">

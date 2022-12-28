@@ -4,7 +4,6 @@
 <style>
 @media screen and (max-width: 600px) {
     .container-cart {
-        /* width: 95%; */
         width: 100%;
       }
 
@@ -16,16 +15,52 @@
     }
 }
 
+/* Élément | http://127.0.0.1:8000/cart/ */
+
+table.table:nth-child(3) {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: flex-end;
+  border: none;
+}
+
+/* Élément | http://127.0.0.1:8000/cart/ */
+
+table.table:nth-child(2) {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Élément | http://127.0.0.1:8000/cart/ */
+
+.box-btn {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px auto;
+}
+
+/* Élément | http://127.0.0.1:8000/cart/ */
+
+.btn-left {
+  width: 33%;
+}
+
+/* Élément | http://127.0.0.1:8000/cart/ */
+
+.btn-right {
+  width: 33%;
+}
+
 </style>
 <div class="container-cart">
-    <div class="row">
         <div class="col-md-12">
             <h1 class="text-center mt-5 mb-5">Panier</h1>
 
             {% if user.cart %}
             <table class="table table-striped text-light">
                 <thead>
-                    <tr>
+                    <tr class="text-center ftw-bold" style="font-size: 1.5em;">
                         <th>Produit(s)</th>
                         <th>Quantité(s)</th>
                         <th>Prix</th>
@@ -34,7 +69,7 @@
                 </thead>
                 <tbody>
                     {% for order in user.cart.orders.all %}
-                    <tr>
+                    <tr class="text-center">
                         <td class="text-light p-3">{{ order.product.name }}</td>
                         <td class="text-light p-3">{{ order.quantity }}</td>
                         <td class="text-light p-3">{{ order.product.price|floatformat:2 }}</td>
@@ -77,7 +112,7 @@
             {% endif %}
 
         </div>
-    </div>
+
 </div>
 
 {% endblock %}

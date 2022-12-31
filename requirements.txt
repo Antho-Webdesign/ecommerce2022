@@ -1,8 +1,8 @@
-asgiref==3.5.2
+asgiref==3.6.0
 beautifulsoup4==4.11.1
 cart==1.2.1
 cffi==1.15.1
-charset-normalizer==3.0.1
+charset-normalizer
 click
 click-config-file
 configobj==5.0.6

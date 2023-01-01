@@ -60,7 +60,69 @@
         width: 100%;
     }
 }
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+    opacity: 0.7;
+}
 </style>
+
+<div class="card text-dark">
+    <img src="{{ profile.image.url }}" alt="John" style="width:100%">
+    <!-- edit image -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" value="Modifier" />
+        <button type="submit" class="btn btn-primary">Valider</button>
+    </form>
+
+    <h1>{{ profile.user.username }}</h1>
+    <p class="title">{{ profile.user.email }}</p>
+    <p>{{ profile.phone }}</p>
+    <p>{{ profile.address }}</p>
+    <p>{{ profile.city }}</p>
+
+    {% if profile.user.is_active %}
+    <p class="text-success">Active</p>
+    {% else %}
+    <p class="text-warning">Not active</p>
+    {% endif %}
+    <a href="{% url 'edit-profile' %}">
+        <button class="btn updt-profile btn-info fs-5">Modifier mon profile</button>
+    </a>
+</div>
+
+
 <div class="container-profile mt-5 mb-5">
     {% if user.is_authenticated %}
     <div class="row no-gutters">
@@ -122,7 +184,6 @@
         </a>
     </div>
 </div>
-
 
 
 {% comment %}

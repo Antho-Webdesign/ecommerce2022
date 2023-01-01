@@ -2,17 +2,19 @@
 
 {% block content %}
 <style>
-   .card-body {
+.card {
+    width: 66%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background: transparent;
+    border: none
+}
+.card-body {
       flex-direction: column;
       width: 50%;
       display: flex;
       margin: auto;
-    }
-
-    .card {
-      width: 66%;
-      background: border-box;
-      margin: 50px auto;
     }
 
     .box-btn {
@@ -42,6 +44,31 @@
     button.btn {
       width: 15%;
     }
+
+@media screen and (min-width: 251px) and (max-width: 950px) {
+    .card {
+        width: 90% !important;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        background: transparent;
+        border: none;
+    }
+
+    .box-product {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .content-box-product {
+        width: 100% !important;
+        margin: 0;
+    }
+
+}
 </style>
 <!-- Search Bar -->
 {% include 'shop/search-bar.html' %}
@@ -51,8 +78,8 @@
 <div class="box-product">
 
     {% for product in page_obj %}
-    <div class="col-md-5 mb-5 content-box-product">
-        <div class="card" style="width: 66%; display: flex; justify-content: center; margin: auto; background: transparent; border: none">
+    <div class="content-box-product">
+        <div class="card">
             <div id="aa{{ product.id }}" class="card-title">
                 <p class="radius-10 text-center fs-5 fst-italic text-info bg-gradient"> {{ product.marque_produit }}</p>
                 <h1 class="text-center product-title radius-10 text-light fw-semibold">{{ product.name }}</h1>

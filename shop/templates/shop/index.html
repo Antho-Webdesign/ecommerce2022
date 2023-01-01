@@ -74,9 +74,13 @@
                         <a href="{% url 'detail' product.slug %}" class="btn btn-warning">Détails</a>
                     </div>
 
+                    {% if user.is_authenticated %}
                     <div class="btn-right-index">
                         <a href="{% url 'add_to_cart' product.slug %}" class="btn btn-success">Acheter</a>
                     </div>
+                    {% else %}
+
+                    {% endif %}
 
                 </div>
             </div>

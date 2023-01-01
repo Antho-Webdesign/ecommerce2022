@@ -1,4 +1,4 @@
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import HttpResponseRedirect, get_object_or_404, render, redirect
 from django.urls import reverse
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
@@ -42,21 +42,23 @@ def total_price_tva(request):
 
 # index
 def index(request):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('-id')
     categories = Category.objects.all()
 
     if name := request.GET.get('search'):
         if request.method == 'GET':
             products = Product.objects.filter(name__icontains=name)
 
-    paginator = Paginator(products, 6)
+    paginator = Paginator(products, 4)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+
 
     context = {
         'products': products,
         'categories': categories,
         'page_obj': page_obj,
+        'paginator': paginator,
     }
 
     return render(request, 'shop/index.html', context)

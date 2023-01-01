@@ -507,6 +507,19 @@ a.btn {
 }
 
 @media screen and (min-width: 651px) and (max-width: 850px) {
+  .card {
+    width: 90% !important;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background: transparent;
+    border: none;
+  }
+
+  .btn-left-index {
+    width: 100%;
+  }
+
   .container-text {
     display: flex;
     flex-direction: column;

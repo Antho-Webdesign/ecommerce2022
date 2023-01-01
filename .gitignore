@@ -4,3 +4,4 @@ shop/__pycache__/views.cpython-310.pyc
 shop/__pycache__/models.cpython-310.pyc
 ecommerce/__pycache__/urls.cpython-310.pyc
 ecommerce/__pycache__/settings.cpython-310.pyc
+*.pyc
